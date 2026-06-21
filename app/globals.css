@@ -1,26 +1,182 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand-primary: #3a760d;
+  --brand-bright: #54b51b;
+  --brand-charcoal: #343433;
+  --brand-mid: #767676;
+  --brand-offwhite: #f5f7f2;
+  --brand-forest: #1a3d06;
+  --brand-sage: #e8f4e0;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--brand-primary);
+  --color-bright: var(--brand-bright);
+  --color-charcoal: var(--brand-charcoal);
+  --color-mid: var(--brand-mid);
+  --color-offwhite: var(--brand-offwhite);
+  --color-forest: var(--brand-forest);
+  --color-sage: var(--brand-sage);
+
+  --font-heading: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-lexend), ui-sans-serif, system-ui, sans-serif;
+
+  --container-page: 1200px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #ffffff;
+    color: var(--brand-charcoal);
+    font-family: var(--font-body);
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .container-page {
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+}
+
+/* Scroll-reveal: JS toggles .is-visible after IntersectionObserver fires */
+.reveal,
+.reveal-down {
+  opacity: 0;
+  transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal {
+  transform: translateY(24px);
+}
+
+.reveal-down {
+  transform: translateY(-24px);
+}
+
+.reveal-scale-x {
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale-y {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible,
+.reveal-down.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-scale-x.is-visible {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.reveal-scale-y.is-visible {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal-down,
+  .reveal-scale-x,
+  .reveal-scale-y {
+    transition: opacity 200ms linear;
+    transform: none;
+  }
+}
+
+/* Accordion (FAQ) height animation via grid-template-rows, no JS measurement needed */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows 280ms ease-out;
+}
+
+.accordion-panel.is-open {
+  grid-template-rows: 1fr;
+}
+
+.accordion-panel > div {
+  min-height: 0;
+}
+
+/* Tab panel crossfade (keyed remount) */
+@keyframes panel-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.panel-fade {
+  animation: panel-fade-in 400ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-fade {
+    animation: none;
+  }
+}
+
+/* Logo marquee */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll 40s linear infinite;
+}
+
+.marquee-group:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }
