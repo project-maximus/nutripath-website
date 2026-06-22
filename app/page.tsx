@@ -271,13 +271,13 @@ export default function HomePage() {
       <section className="py-20 sm:py-28">
         <Reveal className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="relative">
-            <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl shadow-xl">
+            <div className="relative aspect-square w-full max-w-sm overflow-hidden rounded-3xl shadow-xl">
               <Image
                 src="/images/illustrations/Berin-Founder.jpg"
                 alt="Berin Arikan, MPH, RD, founder of NutriPath, writing in a notebook beside her laptop while wearing a NutriPath t-shirt"
                 fill
                 sizes="(min-width: 1024px) 384px, 100vw"
-                className="object-cover"
+                className="object-cover object-[78%_center]"
               />
             </div>
             <div className="absolute -bottom-6 left-4 max-w-[80%] rounded-2xl bg-white p-4 shadow-lg sm:left-8">
