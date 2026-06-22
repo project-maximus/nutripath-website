@@ -209,3 +209,56 @@ export function CheckBadgeIcon({ className = "h-4 w-4" }: IconProps) {
     </svg>
   );
 }
+
+export function ChatIcon({ className = "h-5 w-5" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
+      <path
+        d="M4 5.5h16a1 1 0 0 1 1 1V16a1 1 0 0 1-1 1H9l-4 3.5V17H4a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7.5 10h9M7.5 13h6"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function FlashcardIcon({ className = "h-5 w-5" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
+      <rect
+        x="6.5"
+        y="3.5"
+        width="13"
+        height="9"
+        rx="1.8"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        transform="rotate(6 13 8)"
+        opacity="0.5"
+      />
+      <rect
+        x="4.5"
+        y="7.5"
+        width="15"
+        height="11"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        fill="white"
+      />
+      <path
+        d="M8.5 13h7"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}

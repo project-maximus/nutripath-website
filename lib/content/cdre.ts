@@ -1,19 +1,34 @@
+import {
+  TargetIcon,
+  LayersIcon,
+  ChatIcon,
+  TrendingUpIcon,
+} from "@/components/ui/icons";
+
 export const cdreFeatureIcons = [
   {
     title: "Personalized study plan",
     body: "Built around your exam date and where you're starting from.",
+    icon: TargetIcon,
+    tone: "sage" as const,
   },
   {
     title: "Multi-format content",
     body: "Text, video, audio, flashcards — learn the way that works for you.",
+    icon: LayersIcon,
+    tone: "primary" as const,
   },
   {
     title: "AI study tutor",
     body: "Ask questions and get step-by-step help, any time.",
+    icon: ChatIcon,
+    tone: "sage" as const,
   },
   {
     title: "Progress & competency tracking",
     body: "See exactly which areas need more attention, in real time.",
+    icon: TrendingUpIcon,
+    tone: "primary" as const,
   },
 ];
 

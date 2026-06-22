@@ -82,9 +82,9 @@ export default function PricingPage() {
 
       {/* Hero */}
       <section className="overflow-hidden bg-white py-16 sm:py-24">
-        <div className="container-page grid items-center gap-8 lg:grid-cols-[1fr_1.3fr] lg:gap-10">
-          <div>
-            <h1 className="font-heading text-5xl font-extrabold leading-[1.05] text-charcoal sm:text-6xl">
+        <div className="container-page grid items-center gap-8 text-center lg:grid-cols-[1fr_1.3fr] lg:gap-10 lg:text-left">
+          <div className="flex flex-col items-center lg:items-start">
+            <h1 className="font-heading text-4xl font-extrabold leading-[1.05] text-charcoal sm:text-5xl lg:text-6xl">
               Simple pricing.
               <br />
               Built for <span className="text-primary">your</span> success.
@@ -96,7 +96,7 @@ export default function PricingPage() {
 
             <a
               href="#waitlist"
-              className="mt-7 flex items-center gap-4 rounded-2xl bg-offwhite p-4 transition-colors hover:bg-sage/60"
+              className="mt-7 flex w-full max-w-md items-center gap-4 rounded-2xl bg-offwhite p-4 text-left transition-colors hover:bg-sage/60"
             >
               <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white text-primary shadow-sm">
                 <CalendarIcon className="h-5 w-5" />
@@ -113,7 +113,7 @@ export default function PricingPage() {
               <ChevronRightIcon className="h-4 w-4 flex-shrink-0 text-primary" />
             </a>
 
-            <div className="mt-7 flex flex-wrap gap-4">
+            <div className="mt-7 flex flex-wrap justify-center gap-4 lg:justify-start">
               <Button href="#waitlist">Join the waitlist</Button>
               <Button href="/cdre-prep" variant="secondary">
                 Explore programs
@@ -256,6 +256,31 @@ export default function PricingPage() {
             <Accordion items={orderedFaqItems} />
           </Reveal>
         </div>
+      </section>
+
+      {/* Illustrated CTA */}
+      <section className="py-20 sm:py-28">
+        <Reveal className="container-page mx-auto max-w-2xl text-center">
+          <Image
+            src="/images/illustrations/footer-CTA3-cropped.png"
+            alt="Illustration of a NutriPath candidate holding a study plan clipboard with the NutriPath logo, with notes reading '7 day streak, keep it going' and 'Plan updated, new goals added'"
+            width={971}
+            height={692}
+            className="mx-auto h-auto w-full max-w-lg"
+          />
+          <h2 className="mt-8 font-heading text-3xl font-bold text-charcoal sm:text-4xl">
+            Stay consistent. Watch your plan come together.
+          </h2>
+          <p className="mx-auto mt-4 max-w-md font-body text-lg text-mid">
+            Founding members get a study plan that adapts as you go — and
+            keeps you moving forward.
+          </p>
+          <div className="mt-8 flex justify-center">
+            <Button href="https://app.nutripath.ca" external>
+              Secure your founding spot
+            </Button>
+          </div>
+        </Reveal>
       </section>
 
       <BottomCtaBand />

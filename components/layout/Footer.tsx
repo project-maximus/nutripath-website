@@ -14,8 +14,8 @@ function SoonItem({ label }: { label: string }) {
 export default function Footer() {
   return (
     <footer className="bg-forest text-white">
-      <div className="container-page grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
+      <div className="container-page grid grid-cols-2 gap-x-6 gap-y-10 py-16 lg:grid-cols-4">
+        <div className="col-span-2 flex flex-col items-center text-center lg:col-span-1 lg:items-start lg:text-left">
           <Link href="/" className="font-heading text-xl font-extrabold">
             NutriPath
           </Link>
@@ -35,7 +35,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="flex flex-col gap-3 font-body text-sm">
+        <div className="flex flex-col items-center gap-3 text-center font-body text-sm lg:items-start lg:text-left">
           <h2 className="font-heading text-base font-bold">Programs</h2>
           <Link href="/cdre-prep" className="text-white/70 hover:text-white">
             CDRE Prep
@@ -44,7 +44,7 @@ export default function Footer() {
           <SoonItem label="About the Exams" />
         </div>
 
-        <div className="flex flex-col gap-3 font-body text-sm">
+        <div className="flex flex-col items-center gap-3 text-center font-body text-sm lg:items-start lg:text-left">
           <h2 className="font-heading text-base font-bold">Resources</h2>
           <SoonItem label="Blog" />
           <SoonItem label="CDRE Study Guide" />
@@ -52,7 +52,7 @@ export default function Footer() {
           <SoonItem label="Accessibility" />
         </div>
 
-        <div className="flex flex-col gap-3 font-body text-sm">
+        <div className="col-span-2 flex flex-col items-center gap-3 text-center font-body text-sm lg:col-span-1 lg:items-start lg:text-left">
           <h2 className="font-heading text-base font-bold">Connect</h2>
           <SoonItem label="Contact" />
           <SoonItem label="Partnership Inquiries" />

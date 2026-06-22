@@ -1,4 +1,6 @@
-import { Fragment } from "react";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Reveal from "@/components/ui/Reveal";
 
 type Step = {
@@ -6,6 +8,60 @@ type Step = {
   title: string;
   body: string;
 };
+
+function prefersReducedMotion() {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
+/** Fires once, true, when the observed element scrolls into view. */
+function useInView<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, inView] as const;
+}
+
+function entranceStyle(
+  inView: boolean,
+  delayMs: number,
+  direction: "down" | "up" | "scale"
+) {
+  const reduced = prefersReducedMotion();
+  const offset = direction === "down" ? -14 : direction === "up" ? 14 : 0;
+  const restTransform = direction === "scale" ? "scale(1)" : "translateY(0)";
+  const startTransform =
+    direction === "scale" ? "scale(0.5)" : `translateY(${offset}px)`;
+
+  return {
+    opacity: inView ? 1 : 0,
+    transform: reduced ? "none" : inView ? restTransform : startTransform,
+    transition: reduced
+      ? "opacity 200ms linear"
+      : `opacity 450ms cubic-bezier(0.16,1,0.3,1), transform 450ms cubic-bezier(0.16,1,0.3,1)`,
+    transitionDelay: inView && !reduced ? `${delayMs}ms` : "0ms",
+  };
+}
 
 function StepCard({
   step,
@@ -19,7 +75,7 @@ function StepCard({
 
   return (
     <div
-      className={`rounded-2xl border border-white/60 bg-white/50 p-3 shadow-md backdrop-blur-lg transition-all duration-300 group-hover:-translate-y-1.5 group-hover:bg-white/75 group-hover:shadow-xl sm:p-5 ${alignClass}`}
+      className={`rounded-2xl border border-white/60 bg-white/50 p-3 shadow-md backdrop-blur-lg transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:bg-white/80 hover:shadow-xl sm:p-5 ${alignClass}`}
     >
       <p className="font-heading text-sm font-bold text-charcoal sm:text-lg">
         {step.title}
@@ -32,8 +88,12 @@ function StepCard({
 }
 
 const ROW_HEIGHT = "210px";
+const STEP_DELAY_MS = 480;
+const LINE_DURATION_MS = STEP_DELAY_MS * 3 + 500;
 
 export default function HowItWorksTimeline({ steps }: { steps: Step[] }) {
+  const [desktopRef, desktopInView] = useInView<HTMLDivElement>();
+
   return (
     <div className="mt-14">
       {/* Mobile / tablet: vertical timeline, alternating left/right */}
@@ -90,15 +150,24 @@ export default function HowItWorksTimeline({ steps }: { steps: Step[] }) {
       </div>
 
       {/* Desktop: horizontal zigzag timeline */}
-      <div className="relative hidden lg:block">
+      <div ref={desktopRef} className="relative hidden lg:block">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute left-1/4 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-bright/25 blur-3xl" />
           <div className="absolute left-3/4 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-3xl" />
         </div>
 
-        <Reveal
-          direction="scale-x"
-          className="pointer-events-none absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-[#E5E7E0]"
+        {/* Track */}
+        <div className="pointer-events-none absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-[#E5E7E0]" />
+        {/* Progress fill — sweeps left to right as the steps reveal */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-0 top-1/2 h-[3px] w-full origin-left -translate-y-1/2 rounded-full bg-primary"
+          style={{
+            transform: desktopInView ? "scaleX(1)" : "scaleX(0)",
+            transition: prefersReducedMotion()
+              ? "none"
+              : `transform ${LINE_DURATION_MS}ms cubic-bezier(0.65,0,0.35,1)`,
+          }}
         />
 
         <div
@@ -108,43 +177,44 @@ export default function HowItWorksTimeline({ steps }: { steps: Step[] }) {
           {steps.map((step, index) => {
             const isAbove = index % 2 === 0;
             const column = index + 1;
+            const delay = index * STEP_DELAY_MS;
 
             return (
-              <Fragment key={step.number}>
+              <div key={step.number} style={{ display: "contents" }} className="group">
                 <div
-                  className="group flex flex-col justify-end px-3 pb-6"
+                  className="flex flex-col justify-end px-3 pb-6"
                   style={{ gridColumn: column, gridRow: 1 }}
                 >
                   {isAbove && (
-                    <Reveal direction="down" delay={index * 120}>
+                    <div style={entranceStyle(desktopInView, delay, "down")}>
                       <StepCard step={step} />
-                    </Reveal>
+                    </div>
                   )}
                 </div>
 
                 <div
-                  className="group relative z-10 flex items-center justify-center"
+                  className="relative z-10 flex items-center justify-center"
                   style={{ gridColumn: column, gridRow: 2 }}
                 >
-                  <Reveal
-                    delay={index * 120}
+                  <div
                     className="flex h-12 w-12 items-center justify-center rounded-full border-4 border-white bg-primary font-heading text-sm font-bold text-white shadow-md transition-transform duration-300 group-hover:scale-110"
+                    style={entranceStyle(desktopInView, delay, "scale")}
                   >
                     {step.number}
-                  </Reveal>
+                  </div>
                 </div>
 
                 <div
-                  className="group flex flex-col justify-start px-3 pt-6"
+                  className="flex flex-col justify-start px-3 pt-6"
                   style={{ gridColumn: column, gridRow: 3 }}
                 >
                   {!isAbove && (
-                    <Reveal direction="up" delay={index * 120}>
+                    <div style={entranceStyle(desktopInView, delay, "up")}>
                       <StepCard step={step} />
-                    </Reveal>
+                    </div>
                   )}
                 </div>
-              </Fragment>
+              </div>
             );
           })}
         </div>

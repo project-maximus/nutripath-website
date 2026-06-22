@@ -8,6 +8,7 @@ import LogoMarquee from "@/components/marketing/LogoMarquee";
 import HowItWorksTimeline from "@/components/marketing/HowItWorksTimeline";
 import StatRow from "@/components/marketing/StatRow";
 import FeatureDeepDive from "@/components/marketing/FeatureDeepDive";
+import BentoGrid from "@/components/marketing/BentoGrid";
 import TestimonialCard from "@/components/marketing/TestimonialCard";
 import ComparisonTable from "@/components/marketing/ComparisonTable";
 import BottomCtaBand from "@/components/marketing/BottomCtaBand";
@@ -210,6 +211,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <BentoGrid />
 
       {/* Testimonials */}
       <section className="py-20 sm:py-28">

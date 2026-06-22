@@ -4,6 +4,7 @@ import Link from "next/link";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import Accordion from "@/components/ui/Accordion";
+import { CheckBadgeIcon } from "@/components/ui/icons";
 import FeatureSpotlight from "@/components/marketing/FeatureSpotlight";
 import TestimonialCard from "@/components/marketing/TestimonialCard";
 import ComparisonTable from "@/components/marketing/ComparisonTable";
@@ -169,20 +170,36 @@ export default function CdrePrepPage() {
 
       {/* Feature icon grid */}
       <section className="py-20 sm:py-28">
-        <div className="container-page grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {cdreFeatureIcons.map((feature, index) => (
-            <Reveal key={feature.title} delay={index * 80}>
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sage">
-                <span className="h-3 w-3 rounded-full bg-primary" />
-              </div>
-              <h3 className="mt-4 font-heading text-lg font-bold text-charcoal">
-                {feature.title}
-              </h3>
-              <p className="mt-2 font-body text-sm leading-relaxed text-mid">
-                {feature.body}
-              </p>
-            </Reveal>
-          ))}
+        <div className="container-page grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {cdreFeatureIcons.map((feature, index) => {
+            const Icon = feature.icon;
+            const badgeClass =
+              feature.tone === "primary"
+                ? "bg-primary text-white"
+                : "bg-sage text-primary";
+            return (
+              <Reveal key={feature.title} delay={index * 80}>
+                <div className="flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                  <div className="flex items-start justify-between">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center rounded-xl ${badgeClass}`}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-sage text-primary">
+                      <CheckBadgeIcon className="h-3.5 w-3.5" />
+                    </div>
+                  </div>
+                  <h3 className="mt-5 font-heading text-lg font-bold text-charcoal">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 font-body text-sm leading-relaxed text-mid">
+                    {feature.body}
+                  </p>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
@@ -297,6 +314,31 @@ export default function CdrePrepPage() {
             <Accordion items={orderedFaqItems} />
           </Reveal>
         </div>
+      </section>
+
+      {/* Illustrated CTA */}
+      <section className="py-20 sm:py-28">
+        <Reveal className="container-page mx-auto max-w-2xl text-center">
+          <Image
+            src="/images/illustrations/footer-CTA2-cropped.png"
+            alt="Illustration of a NutriPath candidate holding the NutriPath logo with a raised fist, with notes reading 'Weak areas are improving' and 'You're exam ready'"
+            width={899}
+            height={545}
+            className="mx-auto h-auto w-full max-w-lg"
+          />
+          <h2 className="mt-8 font-heading text-3xl font-bold text-charcoal sm:text-4xl">
+            Walk into the CDRE feeling ready.
+          </h2>
+          <p className="mx-auto mt-4 max-w-md font-body text-lg text-mid">
+            See your weak areas turn into strengths — one study session at a
+            time.
+          </p>
+          <div className="mt-8 flex justify-center">
+            <Button href="https://app.nutripath.ca" external>
+              Secure your founding spot
+            </Button>
+          </div>
+        </Reveal>
       </section>
 
       <BottomCtaBand />
