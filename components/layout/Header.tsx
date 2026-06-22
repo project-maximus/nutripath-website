@@ -15,10 +15,26 @@ function SoonLabel({ label }: { label: string }) {
   );
 }
 
+type MobileLink = { label: string; href?: string; soon?: boolean };
+
+const mobileLinks: MobileLink[] = [
+  { label: "Home", href: "/" },
+  { label: "Home V1.1", href: "/home-v1-1" },
+  { label: "Home V1.2", href: "/home-v1-2" },
+  { label: "CDRE Prep", href: "/cdre-prep" },
+  { label: "CDRE Prep V2", href: "/cdre-prep/v2" },
+  { label: "KCAT Prep", soon: true },
+  { label: "Resources", soon: true },
+  { label: "Pricing", href: "/pricing" },
+  { label: "About", href: "/about" },
+];
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [homeOpen, setHomeOpen] = useState(false);
   const [programsOpen, setProgramsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const homeDropdownRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -31,15 +47,22 @@ export default function Header() {
 
   useEffect(() => {
     function onClickOutside(event: MouseEvent) {
+      const target = event.target as Node;
       if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
+        homeDropdownRef.current &&
+        !homeDropdownRef.current.contains(target)
       ) {
+        setHomeOpen(false);
+      }
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
         setProgramsOpen(false);
       }
     }
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") setProgramsOpen(false);
+      if (event.key === "Escape") {
+        setHomeOpen(false);
+        setProgramsOpen(false);
+      }
     }
     document.addEventListener("mousedown", onClickOutside);
     document.addEventListener("keydown", onKeyDown);
@@ -82,6 +105,53 @@ export default function Header() {
           aria-label="Primary"
           className="hidden items-center gap-1 font-body text-[15px] font-medium text-charcoal lg:flex"
         >
+          <div className="relative" ref={homeDropdownRef}>
+            <button
+              type="button"
+              aria-expanded={homeOpen}
+              aria-haspopup="true"
+              onClick={() => setHomeOpen((open) => !open)}
+              className="flex items-center gap-1.5 rounded-full px-4 py-2.5 transition-colors hover:bg-offwhite"
+            >
+              Home
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 12 12"
+                fill="none"
+                aria-hidden="true"
+                className={`transition-transform ${homeOpen ? "rotate-180" : ""}`}
+              >
+                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            {homeOpen && (
+              <div className="absolute left-0 top-full mt-2 w-48 rounded-2xl border border-[#E5E7E0] bg-white p-2 shadow-lg">
+                <Link
+                  href="/"
+                  onClick={() => setHomeOpen(false)}
+                  className="block rounded-xl px-4 py-2.5 hover:bg-offwhite"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/home-v1-1"
+                  onClick={() => setHomeOpen(false)}
+                  className="block rounded-xl px-4 py-2.5 hover:bg-offwhite"
+                >
+                  Home V1.1
+                </Link>
+                <Link
+                  href="/home-v1-2"
+                  onClick={() => setHomeOpen(false)}
+                  className="block rounded-xl px-4 py-2.5 hover:bg-offwhite"
+                >
+                  Home V1.2
+                </Link>
+              </div>
+            )}
+          </div>
+
           <div className="relative" ref={dropdownRef}>
             <button
               type="button"
@@ -171,67 +241,69 @@ export default function Header() {
         </button>
       </div>
 
-      {mobileOpen && (
-        <div className="fixed inset-0 top-20 z-40 flex flex-col gap-1 overflow-y-auto bg-forest px-6 py-8 text-white lg:hidden">
-          <Link
-            href="/cdre-prep"
-            onClick={() => setMobileOpen(false)}
-            className="rounded-xl px-4 py-4 text-lg font-medium hover:bg-white/10"
-          >
-            CDRE Prep
-          </Link>
-          <Link
-            href="/cdre-prep/v2"
-            onClick={() => setMobileOpen(false)}
-            className="rounded-xl px-4 py-4 text-lg font-medium hover:bg-white/10"
-          >
-            CDRE Prep V2
-          </Link>
-          <span className="flex items-center gap-2 px-4 py-4 text-lg font-medium text-white/50">
-            KCAT Prep
-            <span className="rounded-full bg-white/10 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
-              Soon
-            </span>
-          </span>
-          <span className="flex items-center gap-2 px-4 py-4 text-lg font-medium text-white/50">
-            Resources
-            <span className="rounded-full bg-white/10 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
-              Soon
-            </span>
-          </span>
-          <Link
-            href="/pricing"
-            onClick={() => setMobileOpen(false)}
-            className="rounded-xl px-4 py-4 text-lg font-medium hover:bg-white/10"
-          >
-            Pricing
-          </Link>
-          <Link
-            href="/about"
-            onClick={() => setMobileOpen(false)}
-            className="rounded-xl px-4 py-4 text-lg font-medium hover:bg-white/10"
-          >
-            About
-          </Link>
+      <div
+        aria-hidden={!mobileOpen}
+        className={`fixed inset-x-0 bottom-0 top-20 z-40 flex flex-col overflow-y-auto bg-forest/95 px-6 py-8 text-white backdrop-blur-xl transition-all duration-500 ease-out lg:hidden ${
+          mobileOpen
+            ? "translate-y-0 opacity-100"
+            : "invisible translate-y-full opacity-0"
+        }`}
+      >
+        <nav className="flex flex-col gap-1" aria-label="Mobile">
+          {mobileLinks.map((link, index) => (
+            <div
+              key={link.label}
+              className={`transition-all duration-500 ease-out ${
+                mobileOpen ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+              }`}
+              style={{ transitionDelay: mobileOpen ? `${150 + index * 60}ms` : "0ms" }}
+            >
+              {link.soon ? (
+                <span className="flex items-center gap-2 px-4 py-3.5 font-heading text-2xl font-bold text-white/40">
+                  {link.label}
+                  <span className="rounded-full bg-white/10 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
+                    Soon
+                  </span>
+                </span>
+              ) : (
+                <Link
+                  href={link.href!}
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-4 py-3.5 font-heading text-2xl font-bold transition-colors hover:text-bright"
+                >
+                  {link.label}
+                </Link>
+              )}
+            </div>
+          ))}
+        </nav>
 
-          <div className="mt-4 flex flex-col gap-3 border-t border-white/10 pt-6">
-            <a
-              href="https://app.nutripath.ca"
-              rel="noopener"
-              className="rounded-full border-2 border-white px-5 py-3.5 text-center font-semibold text-white"
-            >
-              Login
-            </a>
-            <Link
-              href="#waitlist"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-full bg-white px-5 py-3.5 text-center font-semibold text-primary"
-            >
-              Join the Waitlist
-            </Link>
-          </div>
+        <div
+          className={`mt-auto flex flex-col gap-3 border-t border-white/10 pt-6 transition-all duration-500 ease-out ${
+            mobileOpen ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+          }`}
+          style={{
+            transitionDelay: mobileOpen
+              ? `${150 + mobileLinks.length * 60}ms`
+              : "0ms",
+          }}
+        >
+          <a
+            href="https://app.nutripath.ca"
+            rel="noopener"
+            className="rounded-full border-2 border-white px-5 py-3.5 text-center font-semibold text-white"
+          >
+            Login
+          </a>
+          <Link
+            href="#waitlist"
+            onClick={() => setMobileOpen(false)}
+            className="rounded-full bg-white px-5 py-3.5 text-center font-semibold text-primary"
+          >
+            Join the Waitlist
+          </Link>
         </div>
-      )}
+      </div>
     </header>
   );
 }
