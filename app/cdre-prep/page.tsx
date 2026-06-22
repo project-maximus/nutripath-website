@@ -122,7 +122,7 @@ export default function CdrePrepPage() {
       />
 
       {/* Hero */}
-      <section className="bg-forest pb-44 pt-14 sm:pb-56">
+      <section className="bg-forest pb-24 pt-10 sm:pb-32">
         <div className="container-page text-center">
           <p className="font-body text-sm text-white/60">
             <Link href="/" className="underline hover:text-white">
@@ -155,8 +155,8 @@ export default function CdrePrepPage() {
         </div>
       </section>
 
-      <div className="container-page -mt-36 sm:-mt-48">
-        <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl shadow-2xl">
+      <div className="container-page -mt-24 sm:-mt-36">
+        <div className="mx-auto max-w-3xl overflow-hidden rounded-3xl shadow-2xl">
           <Image
             src="/images/illustrations/nutripath-img3.png"
             alt="NutriPath CDRE question bank showing practice by competency area, including Medical Nutrition Therapy, Community Nutrition, Food Service Systems, and Professional Practice & Ethics, each with accuracy tracking"

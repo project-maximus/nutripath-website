@@ -82,7 +82,7 @@ export default function PricingPage() {
 
       {/* Hero */}
       <section className="overflow-hidden bg-white py-16 sm:py-24">
-        <div className="container-page grid items-center gap-8 text-center lg:grid-cols-[1fr_1.3fr] lg:gap-10 lg:text-left">
+        <div className="container-page grid items-center gap-8 text-center lg:grid-cols-2 lg:gap-16 lg:text-left">
           <div className="flex flex-col items-center lg:items-start">
             <h1 className="font-heading text-4xl font-extrabold leading-[1.05] text-charcoal sm:text-5xl lg:text-6xl">
               Simple pricing.
@@ -127,8 +127,8 @@ export default function PricingPage() {
             width={1076}
             height={800}
             priority
-            sizes="(min-width: 1024px) 58vw, 100vw"
-            className="h-auto w-full"
+            sizes="(min-width: 1024px) 32vw, 80vw"
+            className="mx-auto h-auto w-full max-w-[420px] lg:mx-0"
           />
         </div>
       </section>

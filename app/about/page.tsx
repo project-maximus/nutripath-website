@@ -74,7 +74,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden py-16 sm:py-24">
+      <section className="relative flex min-h-[842px] items-center overflow-hidden py-16 sm:min-h-[1002px] sm:py-24 lg:min-h-[587px]">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-10"
