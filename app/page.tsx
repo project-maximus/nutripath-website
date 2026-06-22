@@ -3,7 +3,6 @@ import Image from "next/image";
 import Button from "@/components/ui/Button";
 import Pill from "@/components/ui/Pill";
 import Reveal from "@/components/ui/Reveal";
-import Accordion from "@/components/ui/Accordion";
 import LogoMarquee from "@/components/marketing/LogoMarquee";
 import HowItWorksTimeline from "@/components/marketing/HowItWorksTimeline";
 import StatRow from "@/components/marketing/StatRow";
@@ -11,6 +10,8 @@ import FeatureDeepDive from "@/components/marketing/FeatureDeepDive";
 import BentoGrid from "@/components/marketing/BentoGrid";
 import TestimonialCard from "@/components/marketing/TestimonialCard";
 import ComparisonTable from "@/components/marketing/ComparisonTable";
+import PricingTiers from "@/components/marketing/PricingTiers";
+import FaqSection from "@/components/marketing/FaqSection";
 import BottomCtaBand from "@/components/marketing/BottomCtaBand";
 import {
   howItWorksSteps,
@@ -332,39 +333,17 @@ export default function HomePage() {
               shouldn&rsquo;t be a barrier.
             </p>
           </Reveal>
-          <Reveal className="mx-auto mt-12 max-w-md rounded-3xl border-2 border-primary bg-white p-8 text-center">
-            <p className="font-heading text-xl font-bold text-charcoal">
-              Founding Member Pricing
-            </p>
-            <p className="mt-3 font-body text-sm leading-relaxed text-mid">
-              Full pricing launches with the November 2026 founding cohort.
-              Join the waitlist now to lock in founding member rates before
-              they&rsquo;re public.
-            </p>
-            <Button href="#waitlist" className="mt-6" size="sm">
-              Join the Waitlist
-            </Button>
-          </Reveal>
-          <p className="mt-6 text-center font-body text-sm text-mid">
+          <div className="mt-12">
+            <PricingTiers />
+          </div>
+          <p className="mt-8 text-center font-body text-sm text-mid">
             Payment plans available. Preparation support — never a pass
             guarantee.
           </p>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="bg-offwhite py-20 sm:py-28">
-        <div className="container-page">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="font-heading text-3xl font-bold text-charcoal sm:text-4xl">
-              Frequently asked questions.
-            </h2>
-          </Reveal>
-          <Reveal className="mx-auto mt-12 max-w-3xl">
-            <Accordion items={faqItems} />
-          </Reveal>
-        </div>
-      </section>
+      <FaqSection items={faqItems} />
 
       {/* Illustrated CTA */}
       <section className="py-20 sm:py-28">

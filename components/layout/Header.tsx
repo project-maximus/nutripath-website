@@ -130,7 +130,12 @@ export default function Header() {
           >
             Pricing
           </Link>
-          <SoonLabel label="About" />
+          <Link
+            href="/about"
+            className="rounded-full px-4 py-2.5 transition-colors hover:bg-offwhite"
+          >
+            About
+          </Link>
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
@@ -201,12 +206,13 @@ export default function Header() {
           >
             Pricing
           </Link>
-          <span className="flex items-center gap-2 px-4 py-4 text-lg font-medium text-white/50">
+          <Link
+            href="/about"
+            onClick={() => setMobileOpen(false)}
+            className="rounded-xl px-4 py-4 text-lg font-medium hover:bg-white/10"
+          >
             About
-            <span className="rounded-full bg-white/10 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
-              Soon
-            </span>
-          </span>
+          </Link>
 
           <div className="mt-4 flex flex-col gap-3 border-t border-white/10 pt-6">
             <a

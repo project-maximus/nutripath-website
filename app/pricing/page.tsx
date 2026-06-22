@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
-import Accordion from "@/components/ui/Accordion";
+import FaqSection from "@/components/marketing/FaqSection";
 import {
   CalendarIcon,
   ChevronRightIcon,
@@ -244,19 +244,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="bg-offwhite py-20 sm:py-28">
-        <div className="container-page">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="font-heading text-3xl font-bold text-charcoal sm:text-4xl">
-              Frequently asked questions.
-            </h2>
-          </Reveal>
-          <Reveal className="mx-auto mt-12 max-w-3xl">
-            <Accordion items={orderedFaqItems} />
-          </Reveal>
-        </div>
-      </section>
+      <FaqSection items={orderedFaqItems} />
 
       {/* Illustrated CTA */}
       <section className="py-20 sm:py-28">

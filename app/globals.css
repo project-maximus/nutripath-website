@@ -137,6 +137,30 @@
   animation: bento-fade-in 400ms ease-out;
 }
 
+/* FAQ answer word-stagger reveal */
+@keyframes word-blur-in {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.word-reveal {
+  animation: word-blur-in 400ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word-reveal {
+    animation: none;
+  }
+}
+
 @keyframes typing-dot {
   0%,
   80%,
