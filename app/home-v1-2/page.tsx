@@ -55,7 +55,7 @@ export default function HomeV12Page() {
         </div>
         <div className="container-page grid items-center gap-12 text-center lg:grid-cols-2 lg:gap-16 lg:text-left">
           <div className="flex flex-col items-center lg:items-start">
-            <span className="inline-flex items-center rounded-full border border-white/60 bg-white/30 px-3.5 py-1.5 font-body text-sm font-semibold text-primary shadow-sm backdrop-blur-md">
+            <span className="inline-flex items-center rounded-full bg-sage px-3.5 py-1.5 font-body text-sm font-semibold text-primary shadow-sm">
               Built by dietitians, for dietitians
             </span>
             <h1 className="mt-5 font-heading text-4xl font-extrabold text-charcoal sm:text-5xl lg:text-6xl">
@@ -72,7 +72,7 @@ export default function HomeV12Page() {
                 Join the Founding Cohort
               </Button>
               <a
-                href="#waitlist"
+                href="/kcat-bootcamp"
                 className="font-body text-base font-semibold text-primary underline underline-offset-4 hover:text-forest"
               >
                 Explore the KCAT Bootcamp
@@ -80,11 +80,7 @@ export default function HomeV12Page() {
             </div>
           </div>
           <div className="relative">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -inset-8 -z-10 rounded-[2.5rem] bg-gradient-to-br from-bright/50 via-primary/25 to-sage blur-2xl"
-            />
-            <div className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/20 p-3 shadow-2xl backdrop-blur-xl">
+            <div className="relative overflow-hidden rounded-3xl bg-white p-3 shadow-2xl">
               <div className="relative overflow-hidden rounded-2xl">
                 <Image
                   src="/images/illustrations/footer-CTA2-cropped.png"
@@ -96,10 +92,6 @@ export default function HomeV12Page() {
                   className="h-auto w-full"
                 />
               </div>
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-white/40 via-transparent to-transparent"
-              />
             </div>
           </div>
         </div>
@@ -195,9 +187,9 @@ export default function HomeV12Page() {
             </h2>
             <p className="mt-5 font-body text-lg leading-relaxed text-mid">
               Only offered twice a year. Three lifetime attempts. Existing
-              prep resources that weren&rsquo;t built by RDs, weren&rsquo;t
-              designed for accessibility, and cost over $1,200 without
-              guaranteeing you&rsquo;d feel prepared.
+              prep resources that feel scattered, aren&rsquo;t designed for
+              accessibility, and cost over $1,200 without guaranteeing
+              you&rsquo;d feel prepared.
             </p>
           </Reveal>
           <Reveal className="mt-12">
@@ -229,7 +221,7 @@ export default function HomeV12Page() {
               Hear from candidates who&rsquo;ve prepared with NutriPath.
             </p>
           </Reveal>
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
             {testimonials.map((testimonial, index) => (
               <Reveal key={testimonial.name + testimonial.badge} delay={index * 100}>
                 <TestimonialCard testimonial={testimonial} />
@@ -293,8 +285,8 @@ export default function HomeV12Page() {
               Why NutriPath exists
             </p>
             <h2 className="mt-3 font-heading text-[28px] font-bold leading-tight text-charcoal">
-              I sat the CDRE twice. I spent over $1,200 on prep materials not
-              built by RDs.
+              I sat the CDRE twice. I spent over $1,200 on prep materials
+              that felt scattered and inaccessible.
             </h2>
             <p className="mt-5 font-body text-base leading-relaxed text-mid">
               I&rsquo;m also neurodiverse — and the existing resources

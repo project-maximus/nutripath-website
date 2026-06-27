@@ -72,7 +72,7 @@ export default function HomePage() {
                 Join the Founding Cohort
               </Button>
               <a
-                href="#waitlist"
+                href="/kcat-bootcamp"
                 className="font-body text-base font-semibold text-primary underline underline-offset-4 hover:text-forest"
               >
                 Explore the KCAT Bootcamp
@@ -195,9 +195,9 @@ export default function HomePage() {
             </h2>
             <p className="mt-5 font-body text-lg leading-relaxed text-mid">
               Only offered twice a year. Three lifetime attempts. Existing
-              prep resources that weren&rsquo;t built by RDs, weren&rsquo;t
-              designed for accessibility, and cost over $1,200 without
-              guaranteeing you&rsquo;d feel prepared.
+              prep resources that feel scattered, aren&rsquo;t designed for
+              accessibility, and cost over $1,200 without guaranteeing
+              you&rsquo;d feel prepared.
             </p>
           </Reveal>
           <Reveal className="mt-12">
@@ -229,7 +229,7 @@ export default function HomePage() {
               Hear from candidates who&rsquo;ve prepared with NutriPath.
             </p>
           </Reveal>
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
             {testimonials.map((testimonial, index) => (
               <Reveal key={testimonial.name + testimonial.badge} delay={index * 100}>
                 <TestimonialCard testimonial={testimonial} />
@@ -293,8 +293,8 @@ export default function HomePage() {
               Why NutriPath exists
             </p>
             <h2 className="mt-3 font-heading text-[28px] font-bold leading-tight text-charcoal">
-              I sat the CDRE twice. I spent over $1,200 on prep materials not
-              built by RDs.
+              I sat the CDRE twice. I spent over $1,200 on prep materials
+              that felt scattered and inaccessible.
             </h2>
             <p className="mt-5 font-body text-base leading-relaxed text-mid">
               I&rsquo;m also neurodiverse — and the existing resources

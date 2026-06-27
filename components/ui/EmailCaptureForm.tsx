@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import TermsModal from "@/components/marketing/TermsModal";
 
 type EmailCaptureFormProps = {
   ctaLabel?: string;
@@ -18,8 +19,12 @@ export default function EmailCaptureForm({
   className = "",
 }: EmailCaptureFormProps) {
   const inputId = useId();
+  const agreeId = useId();
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "error" | "success">("idle");
+  const [agreed, setAgreed] = useState(false);
+  const [status, setStatus] = useState<
+    "idle" | "error" | "agreement-error" | "success"
+  >("idle");
 
   const isDark = variant === "dark";
 
@@ -27,6 +32,10 @@ export default function EmailCaptureForm({
     event.preventDefault();
     if (!EMAIL_PATTERN.test(email)) {
       setStatus("error");
+      return;
+    }
+    if (!agreed) {
+      setStatus("agreement-error");
       return;
     }
     setStatus("success");
@@ -90,6 +99,48 @@ export default function EmailCaptureForm({
       >
         {ctaLabel}
       </button>
+      <div className="flex items-start gap-2.5">
+        <input
+          id={agreeId}
+          type="checkbox"
+          checked={agreed}
+          aria-invalid={status === "agreement-error"}
+          aria-describedby={
+            status === "agreement-error" ? `${agreeId}-error` : undefined
+          }
+          onChange={(event) => {
+            setAgreed(event.target.checked);
+            if (status === "agreement-error") setStatus("idle");
+          }}
+          className="mt-0.5 h-4 w-4 flex-shrink-0 rounded border-mid/40 text-primary focus-visible:outline-2 focus-visible:outline-offset-2"
+        />
+        <p
+          className={`font-body text-xs leading-relaxed ${
+            isDark ? "text-white/50" : "text-mid"
+          }`}
+        >
+          <label htmlFor={agreeId}>I agree to the </label>
+          <TermsModal
+            triggerClassName={`font-semibold underline underline-offset-2 hover:no-underline ${
+              isDark ? "text-white/70" : "text-charcoal"
+            }`}
+            onAgree={() => {
+              setAgreed(true);
+              if (status === "agreement-error") setStatus("idle");
+            }}
+          />
+          .
+        </p>
+      </div>
+      {status === "agreement-error" && (
+        <p
+          id={`${agreeId}-error`}
+          className={`-mt-1 text-sm ${isDark ? "text-red-200" : "text-red-600"}`}
+          role="alert"
+        >
+          Please agree to the Terms &amp; Conditions to continue.
+        </p>
+      )}
     </form>
   );
 }

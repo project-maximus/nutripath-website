@@ -22,7 +22,7 @@ import { buildFaqSchema } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "CDRE Prep Platform | Personalized Exam Prep for Dietitians",
   description:
-    "CDRE practice exams, personalized study plans, and multi-format content built by registered dietitians. Join NutriPath's founding cohort for the November 2026 CDRE pilot.",
+    "CDRE practice exams, personalized study plans, and multi-format content built by registered dietitians. Join NutriPath's founding cohort for the September 2026 CDRE pilot.",
   robots: { index: false, follow: false },
 };
 
@@ -219,7 +219,7 @@ export default function CdrePrepV2Page() {
               Candidates studying with NutriPath.
             </h2>
           </Reveal>
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
             {testimonials.map((testimonial, index) => (
               <Reveal key={testimonial.name + testimonial.badge} delay={index * 100}>
                 <TestimonialCard testimonial={testimonial} />

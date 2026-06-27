@@ -1,21 +1,46 @@
+import Image from "next/image";
+
 const PARTNERS = [
-  "Dietitians of Canada",
-  "CDRE Exam Authority",
-  "HealthNet",
-  "University & Agency Partners",
-  "UN SDG 3 · 4 · 8 · 10",
+  {
+    name: "University of Toronto Scarborough — Sam Ibrahim Centre for Inclusive Excellence in Entrepreneurship, Innovation & Leadership",
+    src: "/images/trusties/UOFT-SICIEEIL-trimmed.png",
+    width: 900,
+    height: 119,
+    heightClass: "h-10 sm:h-11",
+  },
+  {
+    name: "HealthNet Canada",
+    src: "/images/trusties/helnet-trimmed.png",
+    width: 760,
+    height: 900,
+    heightClass: "h-16 sm:h-20",
+  },
+  {
+    name: "ICUBE UTM",
+    src: "/images/trusties/icube-trimmed.png",
+    width: 700,
+    height: 161,
+    heightClass: "h-7 sm:h-8",
+  },
 ];
 
 function LogoRow() {
   return (
-    <div className="flex shrink-0 items-center gap-12 pr-12">
-      {PARTNERS.map((name) => (
-        <span
-          key={name}
-          className="whitespace-nowrap font-heading text-lg font-bold text-charcoal/40 grayscale transition-all duration-300 hover:text-primary hover:grayscale-0"
+    <div className="flex shrink-0 items-center gap-10 pr-10">
+      {PARTNERS.map((partner) => (
+        <div
+          key={partner.name}
+          className={`flex items-center ${partner.heightClass}`}
         >
-          {name}
-        </span>
+          <Image
+            src={partner.src}
+            alt={partner.name}
+            width={partner.width}
+            height={partner.height}
+            loading="eager"
+            className="h-full w-auto object-contain opacity-50 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+          />
+        </div>
       ))}
     </div>
   );

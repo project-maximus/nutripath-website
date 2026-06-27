@@ -10,7 +10,7 @@ export default function BottomCtaBand() {
           <div className="flex flex-col gap-4 rounded-2xl border-2 border-primary bg-white/5 p-8">
             <h3 className="flex items-center gap-2 font-heading text-lg font-bold text-white">
               <LeafIcon className="h-4 w-4 flex-shrink-0" />
-              Founding Cohort — November 2026 CDRE Pilot
+              Founding Cohort — September 2026 CDRE Pilot
             </h3>
             <p className="flex-1 font-body text-sm leading-relaxed text-white/70">
               Be among the first 25 members. Founding pricing. Direct input
@@ -25,12 +25,14 @@ export default function BottomCtaBand() {
             </a>
           </div>
 
-          <div className="flex flex-col gap-4 rounded-2xl bg-white/5 p-8">
+          <div className="flex flex-col gap-4 rounded-2xl border-2 border-primary bg-white/5 p-8">
             <h3 className="font-heading text-lg font-bold text-white">
-              KCAT Summer 2026 Bootcamp
+              KCAT Bootcamp — Mid–End July 2026
             </h3>
             <p className="font-body text-sm leading-relaxed text-white/70">
-              Focused KCAT prep. Live sessions, community, mock KCAT.
+              Focused KCAT prep. Live sessions, community, mock KCAT, and a
+              1-hour live session on how to answer practice questions,
+              held at the end of the bootcamp.
             </p>
             <EmailCaptureForm
               ctaLabel="Join the KCAT waitlist"

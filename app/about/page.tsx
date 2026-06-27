@@ -8,6 +8,10 @@ import {
   CheckBadgeIcon,
   ChatIcon,
   UsersIcon,
+  LeafIcon,
+  LinkedInIcon,
+  InstagramIcon,
+  TrophyIcon,
 } from "@/components/ui/icons";
 import BottomCtaBand from "@/components/marketing/BottomCtaBand";
 
@@ -93,8 +97,8 @@ export default function AboutPage() {
           </h1>
           <p className="mx-auto mt-5 max-w-xl font-body text-lg leading-relaxed text-mid">
             NutriPath exists because someone who sat the CDRE twice, spent
-            over $1,200 on prep that wasn&rsquo;t built for her, decided
-            future candidates deserved better.
+            over $1,200 on prep that felt scattered and inaccessible,
+            decided future candidates deserved better.
           </p>
         </div>
       </section>
@@ -136,10 +140,10 @@ export default function AboutPage() {
                 assumed everyone processes information the same way.
               </p>
               <p>
-                I spent over $1,200 on prep materials that weren&rsquo;t
-                built by dietitians, weren&rsquo;t designed with
-                accessibility in mind, and never explained why I was
-                getting questions wrong — only that I was.
+                I spent over $1,200 on prep materials that felt scattered
+                and inaccessible, weren&rsquo;t designed with accessibility
+                in mind, and never explained why I was getting questions
+                wrong — only that I was.
               </p>
               <p>
                 The second time, I built my own system: multiple formats,
@@ -157,6 +161,69 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+
+          <Reveal className="relative mt-12 overflow-hidden rounded-3xl bg-gradient-to-br from-sage via-white to-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8 lg:col-span-2 lg:mt-16">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-bright/30 blur-3xl"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-16 left-1/4 h-56 w-56 rounded-full bg-primary/15 blur-3xl"
+            />
+
+            <div className="relative flex flex-col items-center gap-6 sm:flex-row sm:items-center">
+              <div className="relative flex-shrink-0">
+                <div className="relative h-32 w-32 overflow-hidden rounded-2xl border-4 border-white shadow-lg sm:h-36 sm:w-36">
+                  <Image
+                    src="/images/illustrations/Berin_SICIEEIL.jpeg"
+                    alt="Berin Arikan holding a $10,000 Impact Award cheque at the SICIEEIL LevelUP Pitch Competition 2026"
+                    fill
+                    sizes="144px"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <span className="absolute -bottom-3 -right-3 flex h-12 w-12 items-center justify-center rounded-full bg-bright text-white shadow-md ring-4 ring-white">
+                  <TrophyIcon className="h-6 w-6" />
+                </span>
+              </div>
+
+              <div className="text-center sm:text-left">
+                <p className="inline-flex items-center gap-1.5 font-body text-sm font-semibold uppercase tracking-wide text-primary">
+                  <LeafIcon className="h-3.5 w-3.5" />
+                  Proud Member of SICIEEIL
+                </p>
+                <p className="mt-1.5 font-heading text-2xl font-extrabold text-charcoal">
+                  Winner — $10,000 Impact Award
+                </p>
+                <p className="mt-2 max-w-md font-body text-sm leading-relaxed text-mid">
+                  LevelUP Graduation &amp; Pitch Competition 2026, hosted by
+                  the Sam Ibrahim Centre for Inclusive Excellence in
+                  Entrepreneurship, Innovation &amp; Leadership at UTSC.
+                </p>
+                <div className="mt-4 flex flex-wrap items-center justify-center gap-3 sm:justify-start">
+                  <a
+                    href="https://www.linkedin.com/posts/sicieeil_pitchcompetition-innovation-startups-activity-7465422301233299456-qdOo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 font-body text-sm font-semibold text-charcoal shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary hover:text-white hover:shadow-md"
+                  >
+                    <LinkedInIcon className="h-4 w-4" />
+                    View on LinkedIn
+                  </a>
+                  <a
+                    href="https://www.instagram.com/p/DY2KoCvkSX1/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 font-body text-sm font-semibold text-charcoal shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary hover:text-white hover:shadow-md"
+                  >
+                    <InstagramIcon className="h-4 w-4" />
+                    View on Instagram
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </Reveal>
       </section>
 

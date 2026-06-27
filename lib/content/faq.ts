@@ -24,7 +24,7 @@ export const faqItems: AccordionItem[] = [
   {
     question: "How is NutriPath different from other CDRE prep resources?",
     answer:
-      "Most existing CDRE prep resources weren't built by RDs, weren't designed with accessibility in mind, and can cost over $1,200 without ever explaining why you got a question wrong — only that you did. NutriPath is created by dietitians who've sat the exam, priced transparently, and designed from day one for how neurodiverse and IED candidates actually learn.",
+      "Many existing CDRE prep resources feel scattered, aren't designed with accessibility in mind, and can cost over $1,200 without ever explaining why you got a question wrong — only that you did. NutriPath is created by dietitians who've sat the exam, priced transparently, and designed from day one for how neurodiverse and IED candidates actually learn.",
   },
   {
     question: "How many times can you attempt the CDRE?",

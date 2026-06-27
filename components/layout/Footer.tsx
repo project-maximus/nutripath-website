@@ -40,15 +40,24 @@ export default function Footer() {
           <Link href="/cdre-prep" className="text-white/70 hover:text-white">
             CDRE Prep
           </Link>
+          <Link href="/kcat-bootcamp" className="text-white/70 hover:text-white">
+            KCAT Bootcamp
+          </Link>
           <SoonItem label="KCAT Prep" />
           <SoonItem label="About the Exams" />
         </div>
 
         <div className="flex flex-col items-center gap-3 text-center font-body text-sm lg:items-start lg:text-left">
-          <h2 className="font-heading text-base font-bold">Resources</h2>
-          <SoonItem label="Blog" />
+          <Link href="/resources" className="font-heading text-base font-bold hover:text-bright">
+            Resources
+          </Link>
+          <Link href="/blog" className="text-white/70 hover:text-white">
+            Blog
+          </Link>
           <SoonItem label="CDRE Study Guide" />
-          <SoonItem label="KCAT Study Guide" />
+          <Link href="/resources" className="text-white/70 hover:text-white">
+            KCAT Study Guide
+          </Link>
           <SoonItem label="Accessibility" />
         </div>
 
@@ -76,6 +85,9 @@ export default function Footer() {
         <div className="container-page flex flex-col items-center justify-between gap-3 py-6 font-body text-xs text-white/60 sm:flex-row">
           <p>© 2026 NutriPath Canada</p>
           <div className="flex items-center gap-4">
+            <Link href="/terms" className="text-white/70 hover:text-white">
+              Terms &amp; Conditions
+            </Link>
             <SoonItem label="Accessibility Statement" />
             <SoonItem label="Privacy Policy" />
           </div>

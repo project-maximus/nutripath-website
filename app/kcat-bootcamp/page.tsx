@@ -1,44 +1,43 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import { CheckBadgeIcon } from "@/components/ui/icons";
 import FeatureSpotlight from "@/components/marketing/FeatureSpotlight";
+import KcatQuiz from "@/components/marketing/KcatQuiz";
 import TestimonialCard from "@/components/marketing/TestimonialCard";
 import ComparisonTable from "@/components/marketing/ComparisonTable";
-import PricingTiers from "@/components/marketing/PricingTiers";
 import FaqSection from "@/components/marketing/FaqSection";
 import BottomCtaBand from "@/components/marketing/BottomCtaBand";
-import { cdreFeatureIcons, cdreSpotlights } from "@/lib/content/cdre";
+import { kcatFeatureIcons, kcatSpotlights } from "@/lib/content/kcat";
 import {
   testimonials,
-  cdreSpotlightTestimonial,
+  kcatSpotlightTestimonial,
 } from "@/lib/content/testimonials";
 import { comparisonRows } from "@/lib/content/comparison";
 import { faqItems } from "@/lib/content/faq";
 import { buildFaqSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "CDRE Prep Platform | Personalized Exam Prep for Dietitians",
+  title: "KCAT Bootcamp | Live KCAT Prep for Internationally Educated Dietitians",
   description:
-    "CDRE practice exams, personalized study plans, and multi-format content built by registered dietitians. Join NutriPath's founding cohort for the September 2026 CDRE pilot.",
+    "A live, cohort-based KCAT bootcamp running mid to end July 2026 — built by registered dietitians for internationally educated dietitians preparing for the Knowledge and Competency Assessment Tool.",
 };
 
-const cdreFaqOrder = [0, 1, 5, 6, 2, 3, 4, 7, 8, 9];
-const orderedFaqItems = cdreFaqOrder.map((index) => faqItems[index]);
+const kcatFaqOrder = [1, 7, 6, 2, 3, 8, 9, 0, 4, 5];
+const orderedFaqItems = kcatFaqOrder.map((index) => faqItems[index]);
 
 const spotlightVisuals = [
-  <div key="plan" className="rounded-2xl bg-sage p-6">
+  <div key="ied-path" className="rounded-2xl bg-sage p-6">
     <div className="rounded-xl bg-white p-5">
       <p className="font-heading text-sm font-bold text-charcoal">
-        This week&rsquo;s plan
+        We account for your whole path
       </p>
       <ul className="mt-4 flex flex-col gap-3">
         {[
-          { label: "MNT Module 1", state: "done" },
-          { label: "Community Nutrition", state: "active" },
-          { label: "Food Safety Review", state: "upcoming" },
+          { label: "Document assessment", state: "done" },
+          { label: "KCAT preparation", state: "active" },
+          { label: "CDRE-level licensing", state: "upcoming" },
         ].map((row) => (
           <li key={row.label} className="flex items-center gap-3">
             <span
@@ -56,29 +55,44 @@ const spotlightVisuals = [
       </ul>
     </div>
   </div>,
-  <div key="formats" className="rounded-2xl bg-sage p-6">
-    <div className="grid grid-cols-2 gap-3">
-      {["Text notes", "Video", "Audio", "Flashcards", "AI tutor"].map((format) => (
-        <div
-          key={format}
-          className="flex items-center gap-2 rounded-xl bg-white px-4 py-3.5"
-        >
-          <span className="h-2 w-2 rounded-full bg-primary" />
-          <span className="font-body text-sm text-charcoal">{format}</span>
-        </div>
-      ))}
+  <div key="schedule" className="rounded-2xl bg-sage p-6">
+    <div className="rounded-xl bg-white p-5">
+      <p className="font-heading text-sm font-bold text-charcoal">
+        Bootcamp schedule
+      </p>
+      <ul className="mt-4 flex flex-col gap-3">
+        {[
+          { label: "Week 1 — Orientation & Live Kickoff", state: "done" },
+          { label: "Week 2 — Core Content & Live Q&A", state: "active" },
+          { label: "Week 3 — Mock KCAT & Review", state: "upcoming" },
+          { label: "Week 4 — Live Capstone Workshop", state: "upcoming" },
+        ].map((row) => (
+          <li key={row.label} className="flex items-center gap-3">
+            <span
+              className={`h-2.5 w-2.5 flex-shrink-0 rounded-full ${
+                row.state === "done"
+                  ? "bg-bright"
+                  : row.state === "active"
+                  ? "bg-primary"
+                  : "border-2 border-mid/40"
+              }`}
+            />
+            <span className="font-body text-sm text-charcoal">{row.label}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </div>,
-  <div key="question-bank" className="rounded-2xl bg-sage p-6">
+  <div key="competency" className="rounded-2xl bg-sage p-6">
     <div className="rounded-xl bg-white p-5">
       <p className="font-heading text-sm font-bold text-charcoal">
         Practice by competency
       </p>
       <ul className="mt-4 flex flex-col gap-3">
         {[
-          { label: "Medical Nutrition Therapy", accuracy: "82%" },
-          { label: "Community Nutrition", accuracy: "87%" },
-          { label: "Food Service Systems", accuracy: "84%" },
+          { label: "Nutrition Care Process", accuracy: "85%" },
+          { label: "Food Safety & Service", accuracy: "79%" },
+          { label: "Professional Practice", accuracy: "88%" },
         ].map((row) => (
           <li
             key={row.label}
@@ -95,23 +109,25 @@ const spotlightVisuals = [
       </ul>
     </div>
   </div>,
-  <div key="community" className="rounded-2xl bg-sage p-6">
-    <div className="flex items-center justify-center rounded-xl bg-white p-6">
-      <div className="flex -space-x-3">
-        {["AJ", "MK", "SR", "DP"].map((label) => (
-          <span
-            key={label}
-            className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-white bg-primary font-body text-xs font-semibold text-white"
-          >
-            {label}
-          </span>
-        ))}
-      </div>
+  <div key="workshop" className="rounded-2xl bg-sage p-6">
+    <div className="rounded-xl bg-white p-5 text-center">
+      <span className="inline-flex items-center rounded-full bg-primary px-3 py-1 font-body text-xs font-semibold text-white">
+        Capstone
+      </span>
+      <p className="mt-4 font-heading text-lg font-bold text-charcoal">
+        1-Hour Live Session
+      </p>
+      <p className="mt-1 font-body text-sm text-mid">
+        Answering Practice Questions
+      </p>
+      <p className="mt-3 font-body text-xs font-semibold uppercase tracking-wide text-primary">
+        End of bootcamp · July 2026
+      </p>
     </div>
   </div>,
 ];
 
-export default function CdrePrepPage() {
+export default function KcatBootcampPage() {
   return (
     <>
       <script
@@ -128,29 +144,33 @@ export default function CdrePrepPage() {
             <Link href="/" className="underline hover:text-white">
               Home
             </Link>{" "}
-            / CDRE Prep
+            / KCAT Bootcamp
           </p>
           <h1 className="mx-auto mt-6 max-w-3xl font-heading text-4xl font-extrabold text-white sm:text-5xl">
-            CDRE prep that meets you where you are.
+            KCAT prep built for internationally educated dietitians.
           </h1>
           <p className="mx-auto mt-5 max-w-2xl font-body text-lg text-white/80">
-            Built by RDs. Designed for accessibility. Structured for your
-            exam date.
+            Built by RDs. Designed for accessibility. A live bootcamp, not
+            just another self-paced course.
           </p>
           <p className="mx-auto mt-4 max-w-2xl font-body text-sm text-white/60">
-            The CDRE (Canadian Dietetic Registration Examination) is
-            Canada&rsquo;s national licensing exam for dietitians, offered
-            twice a year with a three-attempt lifetime cap.
+            The KCAT (Knowledge and Competency Assessment Tool) is a written
+            exam required for internationally educated dietitians (IEDs) as
+            part of the Canadian registration pathway — a checkpoint before
+            CDRE-level licensing.
           </p>
           <div className="mt-8 flex justify-center">
-            <Button href="https://app.nutripath.ca" external variant="white">
-              Secure your founding spot
-            </Button>
+            <a
+              href="#waitlist"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-center font-body text-base font-semibold text-primary transition-colors hover:bg-sage"
+            >
+              Join the KCAT Bootcamp waitlist
+            </a>
           </div>
           <ul className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 font-body text-sm text-white/70">
             <li>✓ RD-created content</li>
             <li>✓ Built for IEDs</li>
-            <li>✓ Accessibility-first</li>
+            <li>✓ Live cohort format</li>
           </ul>
         </div>
       </section>
@@ -158,8 +178,8 @@ export default function CdrePrepPage() {
       <div className="container-page -mt-24 sm:-mt-36">
         <div className="mx-auto max-w-3xl overflow-hidden rounded-3xl shadow-2xl">
           <Image
-            src="/images/illustrations/nutripath-img3.png"
-            alt="NutriPath CDRE question bank showing practice by competency area, including Medical Nutrition Therapy, Community Nutrition, Food Service Systems, and Professional Practice & Ethics, each with accuracy tracking"
+            src="/images/illustrations/KCAT-hero.png"
+            alt="NutriPath KCAT Live Bootcamp dashboard showing the mid-July to end-July schedule, live online sessions, content timeline, and a 1-hour live practice question session"
             width={1672}
             height={941}
             sizes="(min-width: 1024px) 60vw, 100vw"
@@ -172,7 +192,7 @@ export default function CdrePrepPage() {
       {/* Feature icon grid */}
       <section className="py-20 sm:py-28">
         <div className="container-page grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {cdreFeatureIcons.map((feature, index) => {
+          {kcatFeatureIcons.map((feature, index) => {
             const Icon = feature.icon;
             const badgeClass =
               feature.tone === "primary"
@@ -207,7 +227,7 @@ export default function CdrePrepPage() {
       {/* Feature spotlights */}
       <section className="bg-offwhite py-20 sm:py-28">
         <div className="container-page flex flex-col gap-20 sm:gap-28">
-          {cdreSpotlights.map((spotlight, index) => (
+          {kcatSpotlights.map((spotlight, index) => (
             <FeatureSpotlight
               key={spotlight.title}
               index={index}
@@ -220,17 +240,38 @@ export default function CdrePrepPage() {
         </div>
       </section>
 
+      {/* Sample quiz */}
+      <section className="py-20 sm:py-28">
+        <div className="container-page">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <p className="font-body text-sm font-semibold uppercase tracking-wide text-primary">
+              Try it yourself
+            </p>
+            <h2 className="mt-3 font-heading text-3xl font-bold text-charcoal sm:text-4xl">
+              Think you&rsquo;re ready? Try 3 real KCAT-style questions.
+            </h2>
+            <p className="mt-3 font-body text-lg text-mid">
+              Case-based, competency-mapped, and explained — just like the
+              bootcamp.
+            </p>
+          </Reveal>
+          <Reveal className="mt-12">
+            <KcatQuiz />
+          </Reveal>
+        </div>
+      </section>
+
       {/* Social proof dark band */}
       <section className="bg-charcoal py-20 sm:py-28">
         <Reveal className="container-page mx-auto max-w-3xl text-center">
           <p className="mx-auto mb-6 inline-block rounded-full bg-bright px-4 py-1.5 font-body text-sm font-semibold text-white">
-            {cdreSpotlightTestimonial.badge}
+            {kcatSpotlightTestimonial.badge}
           </p>
           <p className="font-heading text-2xl font-bold leading-snug text-white sm:text-[28px]">
-            &ldquo;{cdreSpotlightTestimonial.quote}&rdquo;
+            &ldquo;{kcatSpotlightTestimonial.quote}&rdquo;
           </p>
           <p className="mt-6 font-body text-sm text-white/60">
-            {cdreSpotlightTestimonial.name} — {cdreSpotlightTestimonial.role}
+            {kcatSpotlightTestimonial.name} — {kcatSpotlightTestimonial.role}
           </p>
         </Reveal>
       </section>
@@ -240,11 +281,12 @@ export default function CdrePrepPage() {
         <div className="container-page">
           <Reveal className="mx-auto max-w-2xl text-center">
             <h2 className="font-heading text-3xl font-bold text-charcoal sm:text-4xl">
-              Why NutriPath for your CDRE prep?
+              Why NutriPath for your KCAT prep?
             </h2>
             <p className="mt-3 font-body text-lg text-mid">
-              Existing CDRE resources are expensive, outdated, and
-              weren&rsquo;t built by registered dietitians. NutriPath was.
+              Resources built specifically for the KCAT and the IED pathway
+              are scarce. NutriPath&rsquo;s bootcamp is built by registered
+              dietitians, from day one, for exactly this journey.
             </p>
           </Reveal>
           <Reveal className="mt-12">
@@ -273,24 +315,22 @@ export default function CdrePrepPage() {
 
       {/* Pricing */}
       <section className="py-20 sm:py-28">
-        <div className="container-page">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="font-heading text-3xl font-bold text-charcoal sm:text-4xl">
-              Simple, transparent pricing.
-            </h2>
-            <p className="mt-3 font-body text-lg text-mid">
-              No hidden fees. Payment plans available. Because cost
-              shouldn&rsquo;t be a barrier.
-            </p>
-          </Reveal>
-          <div className="mt-12">
-            <PricingTiers />
-          </div>
-          <p className="mt-8 text-center font-body text-sm text-mid">
-            Payment plans available. Preparation support — never a pass
-            guarantee.
+        <Reveal className="container-page mx-auto max-w-2xl rounded-3xl border-2 border-primary bg-white p-8 text-center">
+          <p className="font-heading text-xl font-bold text-charcoal">
+            KCAT Bootcamp Pricing
           </p>
-        </div>
+          <p className="mt-3 font-body text-sm leading-relaxed text-mid">
+            Pricing and payment plan details are shared directly with the
+            waitlist ahead of the mid–end July 2026 bootcamp. Payment plans
+            available — cost shouldn&rsquo;t be a barrier.
+          </p>
+          <a
+            href="#waitlist"
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-body text-sm font-semibold text-white transition-colors hover:bg-forest"
+          >
+            Join the KCAT waitlist
+          </a>
+        </Reveal>
       </section>
 
       <FaqSection items={orderedFaqItems} />
@@ -299,23 +339,26 @@ export default function CdrePrepPage() {
       <section className="py-20 sm:py-28">
         <Reveal className="container-page mx-auto max-w-2xl text-center">
           <Image
-            src="/images/illustrations/footer-CTA2-cropped.png"
-            alt="Illustration of a NutriPath candidate holding the NutriPath logo with a raised fist, with notes reading 'Weak areas are improving' and 'You're exam ready'"
-            width={899}
-            height={545}
+            src="/images/illustrations/KCAT-cta.png"
+            alt="Illustration of a NutriPath candidate preparing for the KCAT Bootcamp Mid-End July cohort, with a laptop showing a live session, a calendar, and notes on the 1-hour live session on how to answer practice questions"
+            width={1536}
+            height={1024}
             className="mx-auto h-auto w-full max-w-lg"
           />
           <h2 className="mt-8 font-heading text-3xl font-bold text-charcoal sm:text-4xl">
-            Walk into the CDRE feeling ready.
+            Walk into the KCAT feeling ready.
           </h2>
           <p className="mx-auto mt-4 max-w-md font-body text-lg text-mid">
-            See your weak areas turn into strengths — one study session at a
-            time.
+            Live sessions, real community, and a clear plan — built for the
+            IED pathway from day one.
           </p>
           <div className="mt-8 flex justify-center">
-            <Button href="https://app.nutripath.ca" external>
-              Secure your founding spot
-            </Button>
+            <a
+              href="#waitlist"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-center font-body text-base font-semibold text-white transition-colors hover:bg-forest"
+            >
+              Join the KCAT Bootcamp waitlist
+            </a>
           </div>
         </Reveal>
       </section>

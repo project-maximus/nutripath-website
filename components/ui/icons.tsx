@@ -262,3 +262,56 @@ export function FlashcardIcon({ className = "h-5 w-5" }: IconProps) {
     </svg>
   );
 }
+
+export function LinkedInIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="8.3" cy="8.4" r="1.1" fill="currentColor" />
+      <path d="M8.3 11.3v6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+      <path
+        d="M12.2 17.3v-3.9c0-1.3.9-2.3 2.2-2.3 1.3 0 2.1.9 2.1 2.3v3.9"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M12.2 17.3v-6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function InstagramIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="12" cy="12" r="4.6" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function TrophyIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
+      <path
+        d="M7 4h10v5.5a5 5 0 0 1-10 0V4Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7 5.5H4.5A1.5 1.5 0 0 0 3 7v.5A3.5 3.5 0 0 0 6.5 11H7M17 5.5h2.5A1.5 1.5 0 0 1 21 7v.5A3.5 3.5 0 0 1 17.5 11H17"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <path
+        d="M12 14.5V18M9 20.5h6M9.5 18h5"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}

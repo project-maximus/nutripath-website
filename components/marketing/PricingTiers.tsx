@@ -39,7 +39,7 @@ const tiers: Tier[] = [
   },
   {
     name: "Founding Member",
-    subtitle: "The November 2026 CDRE founding cohort — limited to 25 spots.",
+    subtitle: "The September 2026 CDRE founding cohort — limited to 25 spots.",
     price: "Founding pricing, locked in",
     billingNote: {
       monthly: "Billed monthly, once pricing launches",

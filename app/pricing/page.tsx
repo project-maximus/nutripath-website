@@ -25,7 +25,7 @@ import { buildFaqSchema } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Pricing | NutriPath CDRE Platform",
   description:
-    "Transparent, flexible pricing for NutriPath's CDRE platform. Payment plans available. Join the founding cohort waitlist for November 2026 founding member pricing.",
+    "Transparent, flexible pricing for NutriPath's CDRE platform. Payment plans available. Join the founding cohort waitlist for September 2026 founding member pricing.",
 };
 
 const pricingFaqOrder = [9, 4, 2, 3, 7, 8, 5, 6, 0, 1];
@@ -103,7 +103,7 @@ export default function PricingPage() {
               </span>
               <span className="flex-1">
                 <span className="block font-body text-sm font-bold text-charcoal">
-                  Founding Cohort opens November 2026.
+                  Founding Cohort opens September 2026.
                 </span>
                 <span className="block font-body text-sm text-mid">
                   Join the waitlist to receive full pricing and priority
@@ -139,7 +139,7 @@ export default function PricingPage() {
           <Reveal className="mx-auto max-w-2xl text-center">
             <p className="flex items-center justify-center gap-1.5 font-body text-sm font-semibold uppercase tracking-wide text-primary">
               <LeafIcon className="h-3.5 w-3.5" />
-              Founding Cohort — November 2026
+              Founding Cohort — September 2026
             </p>
             <h2 className="mt-3 font-heading text-3xl font-bold text-charcoal sm:text-4xl">
               Be one of the first 25 founding members.

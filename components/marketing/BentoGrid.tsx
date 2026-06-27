@@ -11,8 +11,6 @@ import {
   TrendingUpIcon,
 } from "@/components/ui/icons";
 
-const WEEK = ["M", "T", "W", "T", "F", "S", "S"];
-
 function prefersReducedMotion() {
   return (
     typeof window !== "undefined" &&
@@ -35,38 +33,123 @@ function useGrowOnMount(delay = 200) {
   return grown;
 }
 
+const PLAN_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const TODAY_DAY_INDEX = 3;
+const TIME_SLOTS = ["9 AM", "11 AM", "1 PM", "3 PM", "5 PM", "7 PM"];
+
+const PLAN_EVENTS = [
+  { day: 1, row: 5, title: "Flashcard Sprint", tone: "sage" as const },
+  { day: 3, row: 4, title: "Live AI Review", tone: "primary" as const },
+  { day: 4, row: 3, title: "Mock Exam", tone: "sage" as const },
+];
+
+const EVENT_STEP_MS = 400;
+
 function StudyPlanVisual() {
-  const grown = useGrowOnMount(200);
+  const [shown, setShown] = useState(0);
+
+  useEffect(() => {
+    if (prefersReducedMotion()) {
+      const id = setTimeout(() => setShown(PLAN_EVENTS.length), 0);
+      return () => clearTimeout(id);
+    }
+
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
+    function runCycle() {
+      setShown(0);
+      PLAN_EVENTS.forEach((_, index) => {
+        timers.push(
+          setTimeout(() => setShown(index + 1), 300 + index * EVENT_STEP_MS)
+        );
+      });
+    }
+
+    runCycle();
+    const interval = setInterval(runCycle, 6000);
+
+    return () => {
+      clearInterval(interval);
+      timers.forEach(clearTimeout);
+    };
+  }, []);
 
   return (
-    <div className="mt-6 rounded-2xl bg-offwhite p-4">
-      <div className="flex items-center justify-between">
-        <p className="font-body text-xs font-semibold text-mid">This week</p>
-        <p className="font-body text-xs font-semibold text-primary">
-          4/7 sessions
-        </p>
-      </div>
-      <div className="mt-3 grid grid-cols-7 gap-1.5">
-        {WEEK.map((day, index) => (
-          <div key={index} className="flex flex-col items-center gap-1.5">
-            <span className="font-body text-[10px] text-mid">{day}</span>
-            <span
-              className={`h-2 w-2 rounded-full ${
-                index < 4
-                  ? "bg-bright"
-                  : index === 4
-                  ? "bg-primary"
-                  : "border border-mid/30 bg-white"
-              }`}
+    <div className="mt-6 rounded-2xl border border-[#E5E7E0] bg-white p-3">
+      <div
+        className="grid"
+        style={{
+          gridTemplateColumns: "30px repeat(7, 1fr)",
+          gridTemplateRows: "22px repeat(6, 34px)",
+        }}
+      >
+        <div />
+        {PLAN_DAYS.map((day, index) => {
+          const isToday = index === TODAY_DAY_INDEX;
+          return (
+            <div
+              key={day}
+              className="flex items-center justify-center gap-1"
+            >
+              <span
+                className={`font-body text-[10px] font-semibold ${
+                  isToday ? "text-primary" : "text-mid"
+                }`}
+              >
+                {day}
+              </span>
+              {isToday && (
+                <span className="relative flex h-1.5 w-1.5 items-center justify-center">
+                  <span className="absolute inset-0 animate-ping rounded-full bg-primary/50" />
+                  <span className="relative h-1.5 w-1.5 rounded-full bg-primary" />
+                </span>
+              )}
+            </div>
+          );
+        })}
+
+        {TIME_SLOTS.map((time, rowIndex) => (
+          <span
+            key={time}
+            className="flex items-start justify-end pr-1 pt-0.5 font-body text-[8px] text-mid"
+            style={{ gridRow: rowIndex + 2, gridColumn: 1 }}
+          >
+            {time}
+          </span>
+        ))}
+
+        {TIME_SLOTS.map((_, rowIndex) =>
+          PLAN_DAYS.map((_, colIndex) => (
+            <div
+              key={`${rowIndex}-${colIndex}`}
+              className="border-l border-t border-[#F0F1ED]"
+              style={{ gridRow: rowIndex + 2, gridColumn: colIndex + 2 }}
             />
+          ))
+        )}
+
+        {PLAN_EVENTS.map((event, index) => (
+          <div
+            key={event.title}
+            className={`m-0.5 flex flex-col items-center justify-center rounded-md px-0.5 transition-opacity duration-300 ${
+              event.tone === "primary"
+                ? "bg-primary text-white"
+                : "bg-sage text-primary"
+            } ${index < shown ? "opacity-100" : "opacity-0"}`}
+            style={{ gridRow: event.row + 2, gridColumn: event.day + 2 }}
+          >
+            <span className="text-center font-body text-[8px] font-semibold leading-tight">
+              {event.title}
+            </span>
           </div>
         ))}
       </div>
-      <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-white">
-        <div
-          className="h-full rounded-full bg-primary transition-[width] duration-1000 ease-out"
-          style={{ width: grown ? "57%" : "0%" }}
-        />
+
+      <div className="mt-2.5 flex items-center gap-2 rounded-lg bg-offwhite px-3 py-2">
+        <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-bright" />
+        <p className="font-body text-[11px] text-mid">
+          Adjusts automatically as your weak topics change
+        </p>
       </div>
     </div>
   );

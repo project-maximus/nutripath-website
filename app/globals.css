@@ -137,6 +137,70 @@
   animation: bento-fade-in 400ms ease-out;
 }
 
+/* Announcement bar rotation */
+@keyframes announcement-fade {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-announcement-fade {
+  animation: announcement-fade 400ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-announcement-fade {
+    animation: none;
+  }
+}
+
+/* Bento study-plan glowing connector */
+@keyframes plan-glow {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(200%);
+  }
+}
+
+.animate-plan-glow {
+  animation: plan-glow 700ms ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-plan-glow {
+    animation: none;
+  }
+
+  .animate-ping {
+    animation: none;
+  }
+
+  .animate-hero-zoom {
+    animation: none;
+  }
+}
+
+/* Cinematic hero photo zoom */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-hero-zoom {
+  animation: hero-zoom 9s ease-out forwards;
+}
+
 /* FAQ answer word-stagger reveal */
 @keyframes word-blur-in {
   from {
