@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
-import { ClipboardCheckIcon, LayersIcon, ChatIcon } from "@/components/ui/icons";
+import ResourceCard from "@/components/marketing/ResourceCard";
 import BottomCtaBand from "@/components/marketing/BottomCtaBand";
 
 export const metadata: Metadata = {
-  title: "Resources | NutriPath Canada",
+  title: "Free Resources | NutriPath Canada",
   description:
-    "CDRE and KCAT study guides and resources for Canadian dietitian candidates, built by registered dietitians.",
+    "Download free CDRE and KCAT study guides from NutriPath — built by registered dietitians. Enter your email and get them sent straight to your inbox.",
 };
 
 export default function ResourcesPage() {
@@ -17,112 +16,83 @@ export default function ResourcesPage() {
       {/* Hero */}
       <section className="bg-offwhite py-16 sm:py-24">
         <div className="container-page text-center">
-          <h1 className="font-heading text-4xl font-extrabold text-charcoal sm:text-5xl">
-            Resources
+          <span className="inline-flex items-center rounded-full bg-sage px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-primary">
+            Free download
+          </span>
+          <h1 className="mt-4 font-heading text-4xl font-extrabold text-charcoal sm:text-5xl">
+            Free guides for your journey.
           </h1>
           <p className="mx-auto mt-5 max-w-xl font-body text-lg leading-relaxed text-mid">
-            Guides and support for your CDRE and KCAT journey, built by
-            registered dietitians.
+            Pick the guide you need. Enter your email. We&rsquo;ll send it straight
+            to your inbox — no account, no paywall.
           </p>
         </div>
       </section>
 
-      {/* KCAT Study Guide */}
+      {/* Guide cards */}
       <section className="py-20 sm:py-28">
         <div className="container-page">
-          <Reveal className="rounded-3xl border-2 border-primary bg-white p-6 sm:p-10">
-            <span className="inline-flex items-center rounded-full bg-sage px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-primary">
-              Coming Soon
-            </span>
-            <div className="mt-4 flex items-start gap-4">
-              <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-sage text-primary">
-                <ClipboardCheckIcon className="h-5 w-5" />
-              </span>
-              <div>
-                <h2 className="font-heading text-2xl font-bold text-charcoal sm:text-3xl">
-                  NutriPath KCAT Study Guide
-                </h2>
-                <p className="mt-2 max-w-2xl font-body text-base leading-relaxed text-mid">
-                  An independent educational resource designed to support
-                  candidates preparing for the Knowledge and Competency
-                  Assessment Tool (KCAT) in Canada.
-                </p>
-              </div>
-            </div>
+          <div className="grid gap-8 sm:grid-cols-2 lg:max-w-4xl lg:mx-auto">
+            <Reveal>
+              <ResourceCard
+                guide="cdre"
+                coverImage="/images/resources/cdre-cover.jpg"
+                coverAlt="First page of the NutriPath CDRE Study Tips guide — 'NUTRIPATH CANADA study tips' with succulents and the NutriPath logo"
+                tag="CDRE"
+                title="CDRE Study Tips"
+                description="Practical exam strategies for the CDRE — competency breakdowns, scheduling templates, and exam-day advice from registered dietitians who've sat it themselves."
+              />
+            </Reveal>
+            <Reveal delay={80}>
+              <ResourceCard
+                guide="kcat"
+                coverImage="/images/resources/kcat-cover.jpg"
+                coverAlt="First page of the NutriPath KCAT Ethics Study Guide"
+                tag="KCAT"
+                title="KCAT Ethics Study Guide"
+                description="Ethics principles and professional standards tested on the KCAT — with case-based scenarios, worked answers, and the reasoning frameworks that matter most."
+              />
+            </Reveal>
+          </div>
 
-            <Button href="#waitlist" className="mt-6">
-              Get notified when it&rsquo;s ready
-            </Button>
-
-            <div className="mt-8 flex flex-col gap-3 border-t border-[#E5E7E0] pt-6 font-body text-xs leading-relaxed text-mid">
-              <p>
-                NutriPath is not affiliated with, endorsed by, or reviewed
-                by any provincial dietetic regulatory body or national
-                dietetic organization.
-              </p>
-              <p>
-                All content is provided for educational and
-                exam-preparation purposes only and does not replace formal
-                education, supervised practice, mentorship, or professional
-                judgment. No guarantees are made regarding exam results,
-                registration outcomes, or timelines.
-              </p>
-              <p>
-                Any references to study time, costs, or career outcomes
-                are informational only and not guaranteed.
-              </p>
-              <p>
-                By using this resource, you acknowledge that exam success
-                depends on individual effort and that use of this guide
-                does not create a professional or client&ndash;dietitian
-                relationship.
-              </p>
-              <p>
-                For official registration and exam requirements, please
-                consult your provincial dietetic regulatory body directly.
+          {/* Disclaimer */}
+          <Reveal className="mt-14 lg:max-w-4xl lg:mx-auto">
+            <div className="rounded-2xl border border-[#E5E7E0] bg-offwhite p-5">
+              <p className="font-body text-xs leading-relaxed text-mid">
+                <span className="font-semibold text-charcoal">Disclaimer: </span>
+                NutriPath is not affiliated with, endorsed by, or reviewed by any
+                provincial dietetic regulatory body or national dietetic organization.
+                All content is for educational and exam-preparation purposes only.
+                No guarantees are made regarding exam results or registration outcomes.{" "}
+                <Link href="/disclaimer" className="underline hover:text-charcoal">
+                  Full disclaimer →
+                </Link>
               </p>
             </div>
           </Reveal>
 
-          {/* Other resources */}
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            <Reveal delay={80} className="flex h-full flex-col rounded-3xl border border-[#E5E7E0] bg-white p-6 shadow-sm">
-              <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-sage text-primary">
-                <LayersIcon className="h-5 w-5" />
-              </span>
-              <h3 className="mt-4 font-heading text-lg font-bold text-charcoal">
-                CDRE Study Guide
-              </h3>
-              <p className="mt-2 font-body text-sm leading-relaxed text-mid">
-                A structured, competency-by-competency guide to CDRE prep —
-                built by registered dietitians who&rsquo;ve sat the exam.
-              </p>
-              <span className="mt-4 inline-flex w-fit items-center rounded-full bg-offwhite px-2.5 py-1 font-body text-xs font-semibold uppercase tracking-wide text-mid">
-                Coming soon
-              </span>
-            </Reveal>
-
-            <Reveal delay={160}>
-              <Link
-                href="/blog"
-                className="flex h-full flex-col rounded-3xl border border-[#E5E7E0] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-sage text-primary">
-                  <ChatIcon className="h-5 w-5" />
-                </span>
-                <h3 className="mt-4 font-heading text-lg font-bold text-charcoal">
-                  Blog
-                </h3>
-                <p className="mt-2 font-body text-sm leading-relaxed text-mid">
-                  Honest, practical writing on CDRE and KCAT prep, accessibility
-                  in dietetics education, and the path to registration.
+          {/* Blog teaser */}
+          <Reveal className="mt-6 lg:max-w-4xl lg:mx-auto">
+            <Link
+              href="/blog"
+              className="group flex items-center justify-between rounded-2xl border border-[#E5E7E0] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <div>
+                <p className="font-body text-xs font-semibold uppercase tracking-wide text-primary">
+                  Also free
                 </p>
-                <span className="mt-4 inline-flex w-fit items-center font-body text-sm font-semibold text-primary">
-                  Read the blog &rarr;
-                </span>
-              </Link>
-            </Reveal>
-          </div>
+                <h3 className="mt-1 font-heading text-lg font-bold text-charcoal transition-colors group-hover:text-primary">
+                  Read the NutriPath Blog
+                </h3>
+                <p className="mt-1 font-body text-sm text-mid">
+                  Practical articles on CDRE and KCAT prep, written by registered dietitians.
+                </p>
+              </div>
+              <span className="ml-6 flex-shrink-0 font-body text-sm font-semibold text-primary">
+                Read →
+              </span>
+            </Link>
+          </Reveal>
         </div>
       </section>
 

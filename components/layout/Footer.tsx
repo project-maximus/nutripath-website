@@ -88,7 +88,9 @@ export default function Footer() {
             <Link href="/terms" className="text-white/70 hover:text-white">
               Terms &amp; Conditions
             </Link>
-            <SoonItem label="Accessibility Statement" />
+            <Link href="/disclaimer" className="text-white/70 hover:text-white">
+              Disclaimer
+            </Link>
             <SoonItem label="Privacy Policy" />
           </div>
           <p>Built by Maxxlab</p>
