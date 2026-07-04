@@ -27,21 +27,6 @@ const team = [
     role: "CEO & Founder",
     bio: "Took the CDRE twice and built NutriPath so other candidates wouldn't have to navigate it alone. Leads product, content, and the mission to make exam prep accessible by design.",
   },
-  {
-    name: "Sylvia Sun",
-    role: "RD Content Developer",
-    bio: "Registered dietitian focused on building CDRE and KCAT content that's accurate, current, and genuinely useful on exam day.",
-  },
-  {
-    name: "Kristine Brigino",
-    role: "RD Content Developer",
-    bio: "Registered dietitian who reviews and develops practice content so every question reflects what the real exam actually tests.",
-  },
-  {
-    name: "Mirey",
-    role: "Brand Ambassador",
-    bio: "Helps NutriPath stay connected to the candidates and communities it's built for.",
-  },
 ];
 
 const stats = [
@@ -230,7 +215,7 @@ export default function AboutPage() {
       {/* Team */}
       <section className="bg-offwhite py-20 sm:py-28">
         <div className="container-page">
-          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <Reveal>
                 <p className="font-body text-sm font-semibold uppercase tracking-wide text-primary">
@@ -245,11 +230,11 @@ export default function AboutPage() {
                 </p>
               </Reveal>
 
-              <div className="mt-10 grid gap-5 sm:grid-cols-2">
+              <div className="mt-10">
                 {team.map((member, index) => (
                   <Reveal key={member.name} delay={index * 80}>
-                    <div className="flex h-full flex-col items-center rounded-3xl bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-sage font-heading text-base font-bold text-primary">
+                    <div className="flex flex-col items-center gap-5 rounded-3xl bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:flex-row sm:items-start sm:text-left">
+                      <span className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-sage font-heading text-lg font-bold text-primary">
                         {member.name
                           .split(" ")
                           .map((part) => part[0])
@@ -257,15 +242,17 @@ export default function AboutPage() {
                           .join("")
                           .toUpperCase()}
                       </span>
-                      <h3 className="mt-3 font-heading text-base font-bold text-charcoal">
-                        {member.name}
-                      </h3>
-                      <p className="mt-1 font-body text-xs font-semibold uppercase tracking-wide text-primary">
-                        {member.role}
-                      </p>
-                      <p className="mt-2.5 font-body text-sm leading-relaxed text-mid">
-                        {member.bio}
-                      </p>
+                      <div>
+                        <h3 className="font-heading text-lg font-bold text-charcoal">
+                          {member.name}
+                        </h3>
+                        <p className="mt-1 font-body text-xs font-semibold uppercase tracking-wide text-primary">
+                          {member.role}
+                        </p>
+                        <p className="mt-2.5 font-body text-sm leading-relaxed text-mid">
+                          {member.bio}
+                        </p>
+                      </div>
                     </div>
                   </Reveal>
                 ))}
@@ -275,8 +262,8 @@ export default function AboutPage() {
             <Reveal className="mx-auto w-full max-w-md lg:mx-0">
               <div className="relative aspect-[2/3] w-full overflow-hidden rounded-3xl shadow-xl">
                 <Image
-                  src="/images/illustrations/team.jpg"
-                  alt="Three members of the NutriPath team standing together outdoors, wearing NutriPath t-shirts"
+                  src="/images/illustrations/teams-photo.jpeg"
+                  alt="Members of the NutriPath team standing together outdoors, wearing NutriPath t-shirts"
                   fill
                   sizes="(min-width: 1024px) 420px, 100vw"
                   className="object-cover"

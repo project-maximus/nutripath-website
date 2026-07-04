@@ -22,6 +22,13 @@ const PARTNERS = [
     height: 161,
     heightClass: "h-7 sm:h-8",
   },
+  {
+    name: "Business in the Streets",
+    src: "/images/trusties/business-trimmed.png",
+    width: 324,
+    height: 254,
+    heightClass: "h-12 sm:h-14",
+  },
 ];
 
 function LogoRow() {
