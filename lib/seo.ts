@@ -1,6 +1,6 @@
-import type { AccordionItem } from "@/components/ui/Accordion";
+import type { FaqItem } from "@/lib/content/faq";
 
-export function buildFaqSchema(items: AccordionItem[]) {
+export function buildFaqSchema(items: FaqItem[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",

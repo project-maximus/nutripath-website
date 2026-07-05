@@ -227,22 +227,6 @@
   }
 }
 
-/* Accordion (FAQ) height animation via grid-template-rows, no JS measurement needed */
-.accordion-panel {
-  display: grid;
-  grid-template-rows: 0fr;
-  overflow: hidden;
-  transition: grid-template-rows 280ms ease-out;
-}
-
-.accordion-panel.is-open {
-  grid-template-rows: 1fr;
-}
-
-.accordion-panel > div {
-  min-height: 0;
-}
-
 /* Tab panel crossfade (keyed remount) */
 @keyframes panel-fade-in {
   from {
