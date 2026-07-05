@@ -3,10 +3,12 @@ import Image from "next/image";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import LogoMarquee from "@/components/marketing/LogoMarquee";
+import ToolsShowcase from "@/components/marketing/ToolsShowcase";
 import HowItWorksTimeline from "@/components/marketing/HowItWorksTimeline";
 import StatRow from "@/components/marketing/StatRow";
 import FeatureDeepDive from "@/components/marketing/FeatureDeepDive";
 import BentoGrid from "@/components/marketing/BentoGrid";
+import StudyFeedSection from "@/components/marketing/StudyFeedSection";
 import TestimonialCard from "@/components/marketing/TestimonialCard";
 import ComparisonTable from "@/components/marketing/ComparisonTable";
 import PricingTiers from "@/components/marketing/PricingTiers";
@@ -53,7 +55,7 @@ export default function HomePage() {
             sizes="100vw"
             className="animate-hero-zoom object-cover object-[center_38%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/85 via-charcoal/10 to-charcoal/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/85 via-charcoal/40 to-charcoal/80" />
         </div>
 
         <div className="container-page relative text-center">
@@ -63,7 +65,7 @@ export default function HomePage() {
           <h1 className="mx-auto mt-6 max-w-3xl font-heading text-5xl font-extrabold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
             Accessible dietetic success.
           </h1>
-          <p className="mx-auto mt-4 font-heading text-2xl font-bold text-bright sm:text-3xl">
+          <p className="mx-auto mt-4 font-heading text-2xl font-bold text-bright drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)] sm:text-3xl">
             Learn. Practice. Pass.
           </p>
           <p className="mx-auto mt-6 max-w-xl font-body text-lg leading-relaxed text-white/85">
@@ -96,6 +98,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <ToolsShowcase />
 
       {/* Platform tour */}
       <section className="bg-offwhite py-20 sm:py-28">
@@ -194,6 +198,8 @@ export default function HomePage() {
       </section>
 
       <BentoGrid />
+
+      <StudyFeedSection />
 
       {/* Testimonials */}
       <section className="py-20 sm:py-28">

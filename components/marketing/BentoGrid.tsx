@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Reveal from "@/components/ui/Reveal";
+import { prefersReducedMotion, useGrowOnMount } from "@/lib/hooks/useGrowOnMount";
 import {
   CalendarIcon,
   ChatIcon,
@@ -10,28 +11,6 @@ import {
   TargetIcon,
   TrendingUpIcon,
 } from "@/components/ui/icons";
-
-function prefersReducedMotion() {
-  return (
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  );
-}
-
-/** Returns false, then flips to true once after `delay`ms — used to trigger a single grow-in transition. */
-function useGrowOnMount(delay = 200) {
-  const [grown, setGrown] = useState(false);
-
-  useEffect(() => {
-    const id = setTimeout(
-      () => setGrown(true),
-      prefersReducedMotion() ? 0 : delay
-    );
-    return () => clearTimeout(id);
-  }, [delay]);
-
-  return grown;
-}
 
 const PLAN_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const TODAY_DAY_INDEX = 3;

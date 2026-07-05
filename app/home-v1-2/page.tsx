@@ -3,10 +3,12 @@ import Image from "next/image";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import LogoMarquee from "@/components/marketing/LogoMarquee";
+import FeatureHighlights from "@/components/marketing/FeatureHighlights";
 import HowItWorksTimeline from "@/components/marketing/HowItWorksTimeline";
 import StatRow from "@/components/marketing/StatRow";
 import FeatureDeepDive from "@/components/marketing/FeatureDeepDive";
 import BentoGrid from "@/components/marketing/BentoGrid";
+import StudyFeedSection from "@/components/marketing/StudyFeedSection";
 import TestimonialCard from "@/components/marketing/TestimonialCard";
 import ComparisonTable from "@/components/marketing/ComparisonTable";
 import PricingTiers from "@/components/marketing/PricingTiers";
@@ -109,6 +111,8 @@ export default function HomeV12Page() {
         </div>
       </section>
 
+      <FeatureHighlights />
+
       {/* Platform tour */}
       <section className="bg-offwhite py-20 sm:py-28">
         <div className="mx-auto max-w-[1360px] px-5">
@@ -206,6 +210,8 @@ export default function HomeV12Page() {
       </section>
 
       <BentoGrid />
+
+      <StudyFeedSection />
 
       {/* Testimonials */}
       <section className="py-20 sm:py-28">

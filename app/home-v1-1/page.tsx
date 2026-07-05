@@ -7,6 +7,7 @@ import HowItWorksTimeline from "@/components/marketing/HowItWorksTimeline";
 import StatRow from "@/components/marketing/StatRow";
 import FeatureDeepDive from "@/components/marketing/FeatureDeepDive";
 import BentoGrid from "@/components/marketing/BentoGrid";
+import StudyFeedSection from "@/components/marketing/StudyFeedSection";
 import TestimonialCard from "@/components/marketing/TestimonialCard";
 import ComparisonTable from "@/components/marketing/ComparisonTable";
 import PricingTiers from "@/components/marketing/PricingTiers";
@@ -196,6 +197,8 @@ export default function HomeV11Page() {
       </section>
 
       <BentoGrid />
+
+      <StudyFeedSection />
 
       {/* Testimonials */}
       <section className="py-20 sm:py-28">
