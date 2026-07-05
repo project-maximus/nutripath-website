@@ -5,7 +5,7 @@ import Reveal from "@/components/ui/Reveal";
 import LogoMarquee from "@/components/marketing/LogoMarquee";
 import HowItWorksTimeline from "@/components/marketing/HowItWorksTimeline";
 import StatRow from "@/components/marketing/StatRow";
-import FeatureDeepDive from "@/components/marketing/FeatureDeepDive";
+import FreeResourcesPitch from "@/components/marketing/FreeResourcesPitch";
 import BentoGrid from "@/components/marketing/BentoGrid";
 import StudyFeedSection from "@/components/marketing/StudyFeedSection";
 import TestimonialCard from "@/components/marketing/TestimonialCard";
@@ -13,11 +13,7 @@ import ComparisonTable from "@/components/marketing/ComparisonTable";
 import PricingTiers from "@/components/marketing/PricingTiers";
 import FaqSection from "@/components/marketing/FaqSection";
 import BottomCtaBand from "@/components/marketing/BottomCtaBand";
-import {
-  howItWorksSteps,
-  featureDeepDiveTabs,
-  deepDiveStats,
-} from "@/lib/content/homepage";
+import { howItWorksSteps, deepDiveStats } from "@/lib/content/homepage";
 import { testimonials } from "@/lib/content/testimonials";
 import { comparisonRows } from "@/lib/content/comparison";
 import { faqItems } from "@/lib/content/faq";
@@ -190,9 +186,7 @@ export default function HomeV11Page() {
             The stakes are real. Your prep should match them.
           </p>
 
-          <div className="mt-16 rounded-3xl bg-white p-6 sm:p-10">
-            <FeatureDeepDive tabs={featureDeepDiveTabs} />
-          </div>
+          <FreeResourcesPitch />
         </div>
       </section>
 

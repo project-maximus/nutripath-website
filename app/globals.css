@@ -308,3 +308,46 @@
     animation: none;
   }
 }
+
+/* Feature card marquee — same mechanism as the logo marquee, slower for heavier content */
+.feature-marquee-track {
+  animation: marquee-scroll 70s linear infinite;
+}
+
+.feature-marquee-group:hover .feature-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-marquee-track {
+    animation: none;
+  }
+}
+
+/* Free-resources banner: fast ticker strip + CTA button shine sweep */
+.resource-ticker-track {
+  animation: marquee-scroll 14s linear infinite;
+}
+
+@keyframes shine-sweep {
+  from {
+    transform: translateX(0) skewX(-12deg);
+  }
+  to {
+    transform: translateX(400%) skewX(-12deg);
+  }
+}
+
+.animate-shine {
+  animation: shine-sweep 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resource-ticker-track {
+    animation: none;
+  }
+
+  .animate-shine {
+    animation: none;
+  }
+}

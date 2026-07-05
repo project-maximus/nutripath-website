@@ -21,25 +21,6 @@ export const howItWorksSteps = [
   },
 ];
 
-export const featureDeepDiveTabs = [
-  {
-    title: "Study with a plan built for you.",
-    body: "Your plan updates as you practice, adapting to where you're strong and where you need more support.",
-  },
-  {
-    title: "Multi-format content for every learner.",
-    body: "Text notes, video walkthroughs, audio summaries, flashcards, mock exams, and an AI tutor. Because not everyone learns the same way — and that's the point.",
-  },
-  {
-    title: "Find what's holding you back.",
-    body: "Detailed performance reports show you exactly which competency areas need work, so you're never studying in the dark.",
-  },
-  {
-    title: "Full CDRE mock exams.",
-    body: "Practice under real conditions with full-length CDRE-format mock exams, timed and scored like the actual test.",
-  },
-];
-
 export const deepDiveStats = [
   { value: "775", label: "CDRE/KCAT candidates per year" },
   { value: "3", label: "lifetime attempts per candidate" },
