@@ -27,7 +27,7 @@ export default function FaqSection({ items }: { items: AccordionItem[] }) {
           </div>
 
           <div className="md:col-span-3">
-            <Accordion items={items} variant="flat" revealAnswer />
+            <Accordion items={items} variant="flat" />
           </div>
 
           <p className="font-body text-base text-mid md:hidden">

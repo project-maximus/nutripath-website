@@ -10,32 +10,11 @@ export type AccordionItem = {
 type AccordionProps = {
   items: AccordionItem[];
   variant?: "card" | "flat";
-  revealAnswer?: boolean;
 };
-
-function AnimatedAnswer({ text }: { text: string }) {
-  const words = text.split(" ");
-
-  return (
-    <p className="font-body text-base leading-relaxed text-mid">
-      {words.map((word, index) => (
-        <span
-          key={index}
-          className="word-reveal inline-block"
-          style={{ animationDelay: `${index * 18}ms` }}
-        >
-          {word}
-          {index < words.length - 1 ? " " : ""}
-        </span>
-      ))}
-    </p>
-  );
-}
 
 export default function Accordion({
   items,
   variant = "card",
-  revealAnswer = false,
 }: AccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const baseId = useId();
@@ -96,13 +75,9 @@ export default function Accordion({
             >
               <div>
                 <div className={isFlat ? "pb-4" : "px-5 pb-5 sm:px-6"}>
-                  {revealAnswer ? (
-                    isOpen && <AnimatedAnswer text={item.answer} />
-                  ) : (
-                    <p className="font-body text-base leading-relaxed text-mid">
-                      {item.answer}
-                    </p>
-                  )}
+                  <p className="font-body text-base leading-relaxed text-mid">
+                    {item.answer}
+                  </p>
                 </div>
               </div>
             </div>

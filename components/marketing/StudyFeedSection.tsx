@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Reveal from "@/components/ui/Reveal";
 import Pill from "@/components/ui/Pill";
+import { prefersReducedMotion } from "@/lib/hooks/useGrowOnMount";
 import {
   ChatIcon,
   FlashcardIcon,
@@ -132,7 +134,40 @@ const FEED = [
   },
 ];
 
+const STEP_MS = 700;
+const PAUSE_MS = 2600;
+
+function useSequentialReveal(total: number) {
+  const [visibleCount, setVisibleCount] = useState(
+    prefersReducedMotion() ? total : 0
+  );
+
+  useEffect(() => {
+    if (prefersReducedMotion()) return;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
+    function runCycle() {
+      setVisibleCount(0);
+      for (let step = 1; step <= total; step += 1) {
+        timers.push(setTimeout(() => setVisibleCount(step), step * STEP_MS));
+      }
+    }
+
+    runCycle();
+    const interval = setInterval(runCycle, total * STEP_MS + PAUSE_MS);
+
+    return () => {
+      clearInterval(interval);
+      timers.forEach(clearTimeout);
+    };
+  }, [total]);
+
+  return visibleCount;
+}
+
 export default function StudyFeedSection() {
+  const visibleCount = useSequentialReveal(FEED.length);
+
   return (
     <section aria-labelledby="study-feed-heading" className="bg-offwhite py-20 sm:py-28">
       <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -178,44 +213,43 @@ export default function StudyFeedSection() {
         <div className="relative h-[440px] w-full overflow-hidden sm:h-[520px]">
           <div className="flex flex-col gap-2.5">
             {FEED.map((entry, index) => {
+              if (index >= visibleCount) return null;
               const Icon = entry.icon;
               return (
-                <Reveal key={entry.title} direction="down" delay={index * 90}>
-                  <div className="relative">
-                    {entry.highlight && (
-                      <div
-                        aria-hidden="true"
-                        className="absolute -inset-1 animate-pulse rounded-2xl bg-primary/15 blur-md"
-                      />
-                    )}
-                    <figure
-                      className={`group relative flex cursor-default items-start gap-3 rounded-2xl border p-4 shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] ${
-                        entry.highlight
-                          ? "border-primary/40 bg-sage/60"
-                          : "border-[#E5E7E0] bg-white"
-                      } ${entry.faded ? "opacity-70" : ""}`}
+                <div key={entry.title} className="animate-notification-in relative">
+                  {entry.highlight && (
+                    <div
+                      aria-hidden="true"
+                      className="absolute -inset-1 animate-pulse rounded-2xl bg-primary/15 blur-md"
+                    />
+                  )}
+                  <figure
+                    className={`group relative flex cursor-default items-start gap-3 rounded-2xl border p-4 shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] ${
+                      entry.highlight
+                        ? "border-primary/40 bg-sage/60"
+                        : "border-[#E5E7E0] bg-white"
+                    } ${entry.faded ? "opacity-70" : ""}`}
+                  >
+                    <div
+                      className={`mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110 ${entry.iconBg} ${entry.iconText}`}
                     >
-                      <div
-                        className={`mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110 ${entry.iconBg} ${entry.iconText}`}
-                      >
-                        <Icon className="size-5" />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-center justify-between gap-2">
-                          <p className="truncate text-sm font-semibold text-charcoal">
-                            {entry.title}
-                          </p>
-                          <span className="shrink-0 text-xs text-mid">
-                            {entry.time}
-                          </span>
-                        </div>
-                        <p className="mt-0.5 text-[13px] leading-snug text-mid">
-                          {entry.body}
+                      <Icon className="size-5" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="truncate text-sm font-semibold text-charcoal">
+                          {entry.title}
                         </p>
+                        <span className="shrink-0 text-xs text-mid">
+                          {entry.time}
+                        </span>
                       </div>
-                    </figure>
-                  </div>
-                </Reveal>
+                      <p className="mt-0.5 text-[13px] leading-snug text-mid">
+                        {entry.body}
+                      </p>
+                    </div>
+                  </figure>
+                </div>
               );
             })}
           </div>
