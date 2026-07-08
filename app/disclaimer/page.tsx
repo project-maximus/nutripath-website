@@ -70,6 +70,26 @@ export default function DisclaimerPage() {
 
           <div>
             <h2 className="font-heading text-xl font-bold text-charcoal">
+              Refund Policy
+            </h2>
+            <p className="mt-3 text-mid">
+              Due to the nature of digital content, no refunds will be issued
+              once access has been granted. Please review all package details
+              carefully before purchasing, and reach out with any questions
+              before enrolling at nutripathcanada@gmail.com.
+            </p>
+            <p className="mt-3 text-mid">
+              If you write the CDRE or KCAT and are unsuccessful, you may
+              regain access: contact nutripathcanada@gmail.com with evidence
+              of your exam attempt, and we will provide a discounted
+              extension to your access so you can continue preparing for
+              your next attempt, at no extra charge beyond the discounted
+              rate.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="font-heading text-xl font-bold text-charcoal">
               Your Acknowledgement
             </h2>
             <p className="mt-3 text-mid">

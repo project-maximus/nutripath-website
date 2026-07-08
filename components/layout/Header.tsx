@@ -26,26 +26,17 @@ const mobileLinks: MobileLink[] = [
   { label: "KCAT Bootcamp", href: "/kcat-bootcamp" },
   { label: "KCAT Prep", soon: true },
   { label: "Resources", href: "/resources" },
-  { label: "Blog V1", href: "/blog" },
-  { label: "Blog V2", href: "/blog/v2" },
   { label: "Pricing", href: "/pricing" },
   { label: "About", href: "/about" },
 ];
 
 export default function Header() {
-  const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [homeOpen, setHomeOpen] = useState(false);
   const [programsOpen, setProgramsOpen] = useState(false);
-  const [resourcesOpen, setResourcesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const homeDropdownRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const resourcesDropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     function onScroll() {
@@ -67,18 +58,11 @@ export default function Header() {
       if (dropdownRef.current && !dropdownRef.current.contains(target)) {
         setProgramsOpen(false);
       }
-      if (
-        resourcesDropdownRef.current &&
-        !resourcesDropdownRef.current.contains(target)
-      ) {
-        setResourcesOpen(false);
-      }
     }
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         setHomeOpen(false);
         setProgramsOpen(false);
-        setResourcesOpen(false);
       }
     }
     document.addEventListener("mousedown", onClickOutside);
@@ -217,61 +201,12 @@ export default function Header() {
             )}
           </div>
 
-          {mounted ? (
-            <div className="relative" ref={resourcesDropdownRef}>
-              <button
-                type="button"
-                aria-expanded={resourcesOpen}
-                aria-haspopup="true"
-                onClick={() => setResourcesOpen((open) => !open)}
-                className="flex items-center gap-1.5 rounded-full px-4 py-2.5 transition-colors hover:bg-offwhite"
-              >
-                Resources
-                <svg
-                  width="11"
-                  height="11"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                  aria-hidden="true"
-                  className={`transition-transform ${resourcesOpen ? "rotate-180" : ""}`}
-                >
-                  <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-              {resourcesOpen && (
-                <div className="absolute left-0 top-full mt-2 w-48 rounded-2xl border border-[#E5E7E0] bg-white p-2 shadow-lg">
-                  <Link
-                    href="/resources"
-                    onClick={() => setResourcesOpen(false)}
-                    className="block rounded-xl px-4 py-2.5 hover:bg-offwhite"
-                  >
-                    Resources
-                  </Link>
-                  <Link
-                    href="/blog"
-                    onClick={() => setResourcesOpen(false)}
-                    className="block rounded-xl px-4 py-2.5 hover:bg-offwhite"
-                  >
-                    Blog V1
-                  </Link>
-                  <Link
-                    href="/blog/v2"
-                    onClick={() => setResourcesOpen(false)}
-                    className="block rounded-xl px-4 py-2.5 hover:bg-offwhite"
-                  >
-                    Blog V2
-                  </Link>
-                </div>
-              )}
-            </div>
-          ) : (
-            <Link
-              href="/resources"
-              className="rounded-full px-4 py-2.5 transition-colors hover:bg-offwhite"
-            >
-              Resources
-            </Link>
-          )}
+          <Link
+            href="/resources"
+            className="rounded-full px-4 py-2.5 transition-colors hover:bg-offwhite"
+          >
+            Resources
+          </Link>
           <Link
             href="/pricing"
             className="rounded-full px-4 py-2.5 transition-colors hover:bg-offwhite"

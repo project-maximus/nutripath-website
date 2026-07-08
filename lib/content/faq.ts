@@ -104,6 +104,19 @@ const rawFaqItems: RawFaqItem[] = [
       "No — accounts and materials are for individual use only to keep pricing fair for everyone.",
     iconKey: "users",
   },
+  {
+    question: "What is the refund policy?",
+    answer:
+      "Due to the nature of digital content, no refunds will be issued once access has been granted. Please review all package details carefully before purchasing, and feel free to reach out with any questions before enrolling at nutripathcanada@gmail.com.",
+    iconKey: "payment",
+  },
+  {
+    question:
+      "If I write the CDRE or KCAT and I'm unsuccessful, can I regain access?",
+    answer:
+      "Yes. Please reach out to nutripathcanada@gmail.com with evidence of your exam attempt, and we will provide a discounted extension to your access so you can continue preparing for your next attempt, at no extra charge beyond the discounted rate.",
+    iconKey: "payment",
+  },
 
   // ── KCAT FAQ ──────────────────────────────────────────────────────
   {
@@ -275,7 +288,7 @@ export const faqItems: FaqItem[] = rawFaqItems.map((item, index) => ({
 
 /** Index ranges within `faqItems`, for pages that want a topic-specific slice. */
 export const FAQ_RANGES = {
-  homepage: [0, 13] as const,
-  kcat: [13, 23] as const,
-  cdre: [23, 38] as const,
+  homepage: [0, 15] as const,
+  kcat: [15, 25] as const,
+  cdre: [25, 40] as const,
 };

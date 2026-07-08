@@ -18,7 +18,7 @@ import {
 import ComparisonTable from "@/components/marketing/ComparisonTable";
 import PricingTiers from "@/components/marketing/PricingTiers";
 import BottomCtaBand from "@/components/marketing/BottomCtaBand";
-import { comparisonRows } from "@/lib/content/comparison";
+import { comparisonPlans } from "@/lib/content/comparison";
 import { faqItems } from "@/lib/content/faq";
 import { buildFaqSchema } from "@/lib/seo";
 
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 };
 
 // Curated payment/policy questions, spanning the general, KCAT, and CDRE FAQ groups.
-const pricingFaqOrder = [11, 3, 4, 5, 12, 16, 17, 20, 25, 30];
+const pricingFaqOrder = [11, 3, 4, 5, 12, 18, 19, 22, 27, 32];
 const orderedFaqItems = pricingFaqOrder.map((index) => faqItems[index]);
 
 const included = [
@@ -232,15 +232,15 @@ export default function PricingPage() {
         <div className="container-page">
           <Reveal className="mx-auto max-w-2xl text-center">
             <h2 className="font-heading text-3xl font-bold text-charcoal sm:text-4xl">
-              What you&rsquo;re actually paying for.
+              A comparison that disqualifies.
             </h2>
-            <p className="mt-3 font-body text-lg text-mid">
-              Existing CDRE/KCAT resources are expensive, outdated, and
-              weren&rsquo;t built by registered dietitians. NutriPath was.
+            <p className="mt-3 font-body text-lg italic text-mid">
+              Telling the wrong student &ldquo;not this one&rdquo; makes every
+              other promise credible.
             </p>
           </Reveal>
           <Reveal className="mt-12">
-            <ComparisonTable rows={comparisonRows} />
+            <ComparisonTable plans={comparisonPlans} />
           </Reveal>
         </div>
       </section>

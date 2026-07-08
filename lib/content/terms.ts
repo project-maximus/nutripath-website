@@ -52,4 +52,11 @@ export const termsSections: TermsSection[] = [
     title: "9. Governing Law",
     body: "These Terms & Conditions are governed by the laws of Canada.",
   },
+  {
+    title: "10. Refund Policy",
+    bullets: [
+      "Due to the nature of digital content, no refunds will be issued once access has been granted. Please review all package details carefully before purchasing, and reach out with any questions before enrolling at nutripathcanada@gmail.com.",
+      "If you write the CDRE or KCAT and are unsuccessful, you may regain access: contact nutripathcanada@gmail.com with evidence of your exam attempt, and we will provide a discounted extension to your access so you can continue preparing for your next attempt, at no extra charge beyond the discounted rate.",
+    ],
+  },
 ];

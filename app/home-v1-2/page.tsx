@@ -16,9 +16,11 @@ import FaqSection from "@/components/marketing/FaqSection";
 import BottomCtaBand from "@/components/marketing/BottomCtaBand";
 import { howItWorksSteps, deepDiveStats } from "@/lib/content/homepage";
 import { testimonials } from "@/lib/content/testimonials";
-import { comparisonRows } from "@/lib/content/comparison";
-import { faqItems } from "@/lib/content/faq";
+import { comparisonPlans } from "@/lib/content/comparison";
+import { faqItems, FAQ_RANGES } from "@/lib/content/faq";
 import { buildFaqSchema, organizationSchema } from "@/lib/seo";
+
+const homeFaqItems = faqItems.slice(...FAQ_RANGES.homepage);
 
 export const metadata: Metadata = {
   title: "CDRE Exam Prep Canada | Dietitian Licensing Exam Preparation",
@@ -37,7 +39,7 @@ export default function HomeV12Page() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(buildFaqSchema(faqItems)),
+          __html: JSON.stringify(buildFaqSchema(homeFaqItems)),
         }}
       />
 
@@ -242,15 +244,15 @@ export default function HomeV12Page() {
         <div className="container-page">
           <Reveal className="mx-auto max-w-2xl text-center">
             <h2 className="font-heading text-3xl font-bold text-charcoal sm:text-4xl">
-              Why NutriPath? See how we compare.
+              A comparison that disqualifies.
             </h2>
-            <p className="mt-3 font-body text-lg text-mid">
-              Existing CDRE/KCAT resources are expensive, outdated, and
-              weren&rsquo;t built by registered dietitians. NutriPath was.
+            <p className="mt-3 font-body text-lg italic text-mid">
+              Telling the wrong student &ldquo;not this one&rdquo; makes every
+              other promise credible.
             </p>
           </Reveal>
           <Reveal className="mt-12">
-            <ComparisonTable rows={comparisonRows} />
+            <ComparisonTable plans={comparisonPlans} />
           </Reveal>
           <div className="mt-10 text-center">
             <Button href="https://app.nutripath.ca" external size="sm">
@@ -335,7 +337,7 @@ export default function HomeV12Page() {
         </div>
       </section>
 
-      <FaqSection items={faqItems} />
+      <FaqSection items={homeFaqItems} />
 
       {/* Illustrated CTA */}
       <section className="py-20 sm:py-28">

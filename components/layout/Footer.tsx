@@ -13,8 +13,15 @@ function SoonItem({ label }: { label: string }) {
 
 export default function Footer() {
   return (
-    <footer className="bg-forest text-white">
-      <div className="container-page grid grid-cols-2 gap-x-6 gap-y-10 py-16 lg:grid-cols-4">
+    <footer className="relative overflow-hidden bg-forest text-white">
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-[24%] select-none whitespace-nowrap text-center font-heading text-[26vw] font-extrabold leading-none tracking-tight text-white/[0.04] sm:text-[21vw] lg:text-[18vw]"
+      >
+        NUTRIPATH
+      </span>
+
+      <div className="container-page relative grid grid-cols-2 gap-x-6 gap-y-10 py-16 lg:grid-cols-4">
         <div className="col-span-2 flex flex-col items-center text-center lg:col-span-1 lg:items-start lg:text-left">
           <Link href="/" className="font-heading text-xl font-extrabold">
             NutriPath
@@ -81,7 +88,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10">
+      <div className="relative border-t border-white/10">
         <div className="container-page flex flex-col items-center justify-between gap-3 py-6 font-body text-xs text-white/60 sm:flex-row">
           <p>© 2026 NutriPath Canada</p>
           <div className="flex items-center gap-4">
@@ -93,7 +100,14 @@ export default function Footer() {
             </Link>
             <SoonItem label="Privacy Policy" />
           </div>
-          <p>Built by Maxxlab</p>
+          <a
+            href="https://maxxlab.tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/70 hover:text-white"
+          >
+            Powered by Maxxlab
+          </a>
         </div>
         <div className="container-page pb-6">
           <p className="font-body text-xs text-white/50">
