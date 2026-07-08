@@ -16,7 +16,7 @@ import {
   cdreSpotlightTestimonial,
 } from "@/lib/content/testimonials";
 import { comparisonRows } from "@/lib/content/comparison";
-import { faqItems } from "@/lib/content/faq";
+import { faqItems, FAQ_RANGES } from "@/lib/content/faq";
 import { buildFaqSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -26,8 +26,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const cdreFaqOrder = [0, 1, 5, 6, 2, 3, 4, 7, 8, 9];
-const orderedFaqItems = cdreFaqOrder.map((index) => faqItems[index]);
+const orderedFaqItems = faqItems.slice(...FAQ_RANGES.cdre);
 
 const spotlightImages = [
   {

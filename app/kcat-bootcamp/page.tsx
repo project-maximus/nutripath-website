@@ -15,7 +15,7 @@ import {
   kcatSpotlightTestimonial,
 } from "@/lib/content/testimonials";
 import { comparisonRows } from "@/lib/content/comparison";
-import { faqItems } from "@/lib/content/faq";
+import { faqItems, FAQ_RANGES } from "@/lib/content/faq";
 import { buildFaqSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -24,8 +24,7 @@ export const metadata: Metadata = {
     "A live, cohort-based KCAT bootcamp running mid to end July 2026 — built by registered dietitians for internationally educated dietitians preparing for the Knowledge and Competency Assessment Tool.",
 };
 
-const kcatFaqOrder = [1, 7, 6, 2, 3, 8, 9, 0, 4, 5];
-const orderedFaqItems = kcatFaqOrder.map((index) => faqItems[index]);
+const orderedFaqItems = faqItems.slice(...FAQ_RANGES.kcat);
 
 const spotlightVisuals = [
   <div key="ied-path" className="rounded-2xl bg-sage p-6">

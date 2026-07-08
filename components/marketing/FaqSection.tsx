@@ -106,7 +106,7 @@ export default function FaqSection({ items }: { items: FaqItem[] }) {
             {visibleItems.map((item, index) => {
               const Icon = ICONS[item.iconKey];
               return (
-                <Reveal key={item.question} delay={(index % 6) * 70}>
+                <Reveal key={item.id} delay={(index % 6) * 70}>
                   <div className="group flex h-full flex-col rounded-2xl border border-[#E5E7E0] bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg">
                     <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-sage text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
                       <Icon className="h-5 w-5" />

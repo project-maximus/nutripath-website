@@ -28,7 +28,8 @@ export const metadata: Metadata = {
     "Transparent, flexible pricing for NutriPath's CDRE platform. Payment plans available. Join the founding cohort waitlist for September 2026 founding member pricing.",
 };
 
-const pricingFaqOrder = [9, 4, 2, 3, 7, 8, 5, 6, 0, 1];
+// Curated payment/policy questions, spanning the general, KCAT, and CDRE FAQ groups.
+const pricingFaqOrder = [11, 3, 4, 5, 12, 16, 17, 20, 25, 30];
 const orderedFaqItems = pricingFaqOrder.map((index) => faqItems[index]);
 
 const included = [
