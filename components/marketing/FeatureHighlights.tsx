@@ -520,20 +520,37 @@ function FeatureCard({ feature }: { feature: (typeof FEATURES)[number] }) {
   );
 }
 
-export default function FeatureHighlights() {
+type FeatureHighlightsProps = {
+  eyebrow?: string;
+  heading?: string;
+  subheading?: string;
+};
+
+export default function FeatureHighlights({
+  eyebrow = "Signature features",
+  heading = "The tools candidates actually use every day",
+  subheading,
+}: FeatureHighlightsProps) {
   return (
     <section aria-labelledby="feature-highlights-heading" className="bg-offwhite py-20 sm:py-28">
       <div className="container-page">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="font-body text-sm font-semibold uppercase tracking-wide text-primary">
-            Signature features
-          </p>
+          {eyebrow && (
+            <p className="font-body text-sm font-semibold uppercase tracking-wide text-primary">
+              {eyebrow}
+            </p>
+          )}
           <h2
             id="feature-highlights-heading"
             className="mt-3 font-heading text-3xl font-extrabold leading-tight text-charcoal sm:text-4xl"
           >
-            The tools candidates actually use every day
+            {heading}
           </h2>
+          {subheading && (
+            <h3 className="mt-3 font-body text-lg font-medium text-mid">
+              {subheading}
+            </h3>
+          )}
         </Reveal>
       </div>
 

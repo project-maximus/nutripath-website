@@ -4,6 +4,7 @@ import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import LogoMarquee from "@/components/marketing/LogoMarquee";
 import ToolsShowcase from "@/components/marketing/ToolsShowcase";
+import FeatureHighlights from "@/components/marketing/FeatureHighlights";
 import HowItWorksTimeline from "@/components/marketing/HowItWorksTimeline";
 import StatRow from "@/components/marketing/StatRow";
 import FreeResourcesPitch from "@/components/marketing/FreeResourcesPitch";
@@ -326,6 +327,12 @@ export default function HomePage() {
       </section>
 
       <FaqSection items={homeFaqItems} />
+
+      <FeatureHighlights
+        eyebrow=""
+        heading="Built for Results"
+        subheading="Explore the features powering your success."
+      />
 
       {/* Illustrated CTA */}
       <section className="py-20 sm:py-28">

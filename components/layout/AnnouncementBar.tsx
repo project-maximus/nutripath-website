@@ -60,7 +60,7 @@ export default function AnnouncementBar() {
     <div className="relative bg-primary px-4 py-2.5 text-center font-body text-sm text-white">
       <p
         key={index}
-        className="mx-auto flex max-w-[calc(100%-2.5rem)] items-center justify-center gap-1.5 animate-announcement-fade"
+        className="mx-auto flex max-w-[calc(100%-2.5rem)] flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5 animate-announcement-fade"
       >
         <LeafIcon className="h-3.5 w-3.5 flex-shrink-0" />
         {message.text} —{" "}

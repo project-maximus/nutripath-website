@@ -16,7 +16,7 @@ export default function Footer() {
     <footer className="relative overflow-hidden bg-forest text-white">
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-[24%] select-none whitespace-nowrap text-center font-heading text-[26vw] font-extrabold leading-none tracking-tight text-white/[0.04] sm:text-[21vw] lg:text-[18vw]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-[24%] select-none whitespace-nowrap text-center font-heading text-[18vw] font-extrabold leading-none tracking-tight text-white/[0.04]"
       >
         NUTRIPATH
       </span>
@@ -106,11 +106,11 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="text-white/70 hover:text-white"
           >
-            Powered by Maxxlab
+            Powered by <span className="text-red-500 underline">Maxxlab</span>
           </a>
         </div>
         <div className="container-page pb-6">
-          <p className="font-body text-xs text-white/50">
+          <p className="text-center font-body text-xs text-white/50">
             CDRE & KCAT built by dietitians
           </p>
         </div>
