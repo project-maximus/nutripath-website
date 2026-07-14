@@ -6,12 +6,15 @@ import { TrophyIcon } from "@/components/ui/icons";
 
 type QuizOption = { key: "A" | "B" | "C" | "D"; text: string };
 
+type Competency = { code: string; label: string; explanation: string };
+
 type QuizQuestion = {
   domain: string;
   question: string;
   options: QuizOption[];
   correct: "A" | "B" | "C" | "D";
   rationale: string;
+  competencies: Competency[];
 };
 
 const QUIZ_QUESTIONS: QuizQuestion[] = [
@@ -31,6 +34,20 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
     correct: "C",
     rationale:
       "Both B12 and folate deficiency raise MCV and homocysteine — but only B12 deficiency raises MMA, making it the differentiating marker here.",
+    competencies: [
+      {
+        code: "1.03a",
+        label: "Nutrient Metabolism",
+        explanation:
+          "Covers understanding the metabolic pathways nutrients move through. This question requires knowing that B12 deficiency specifically impairs the methylmalonyl-CoA mutase pathway, elevating MMA in a way folate deficiency does not.",
+      },
+      {
+        code: "5.01b",
+        label: "Nutrition Assessment",
+        explanation:
+          "Covers interpreting biochemical data as part of a client assessment. Here, four lab values have to be read together to correctly pin the anemia on B12 rather than folate or iron.",
+      },
+    ],
   },
   {
     domain: "Food Provision",
@@ -48,6 +65,26 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
     correct: "A",
     rationale:
       "Cook-chill requires rapid cooling (60°C to 4°C within 4 hours) — the critical control point that prevents C. perfringens spores from germinating in the temperature danger zone.",
+    competencies: [
+      {
+        code: "1.02e",
+        label: "Food Safety",
+        explanation:
+          "Covers foundational food safety principles, including microbial risk. This question tests recognition that slow cooling lets Clostridium perfringens spores germinate in the temperature danger zone.",
+      },
+      {
+        code: "4.02a",
+        label: "Assess Practice Situations",
+        explanation:
+          "Covers evaluating a real operational scenario for risk before acting. Demonstrated here by weighing the food safety implications of switching production systems, not just the efficiency gains.",
+      },
+      {
+        code: "6.02c",
+        label: "Food Safety Systems",
+        explanation:
+          "Covers HACCP-based systems specific to food service operations. This question isolates the critical control point — rapid cooling — that is unique to cook-chill production.",
+      },
+    ],
   },
   {
     domain: "Communication & Collaboration",
@@ -65,6 +102,26 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
     correct: "B",
     rationale:
       "This balances safety with dignity — acknowledging emotion, explaining risk, and collaborating on options respects both the SLP's expertise and the family's autonomy.",
+    competencies: [
+      {
+        code: "3.01b",
+        label: "Communication Approaches",
+        explanation:
+          "Covers using appropriate communication techniques in emotionally charged situations. The correct answer acknowledges the family's emotion before moving to education, rather than leading with a directive.",
+      },
+      {
+        code: "2.04c/d",
+        label: "Client-Centered, Collaborative Decision-Making",
+        explanation:
+          "Covers involving clients and families as partners in care decisions. Demonstrated by collaboratively exploring visually appealing texture options rather than issuing a one-sided ruling.",
+      },
+      {
+        code: "3.05c",
+        label: "Empathy",
+        explanation:
+          "Covers responding to distress with genuine acknowledgment rather than moving straight past it. The response explicitly validates the family's concern about dignity before addressing safety.",
+      },
+    ],
   },
 ];
 
@@ -175,6 +232,23 @@ export default function KcatQuiz() {
                 <p className="mt-1.5 font-body text-sm leading-relaxed text-mid">
                   {question.rationale}
                 </p>
+
+                <p className="mt-4 font-body text-xs font-semibold uppercase tracking-wide text-primary">
+                  ICDEP Competencies
+                </p>
+                <div className="mt-2 flex flex-col gap-2.5">
+                  {question.competencies.map((competency) => (
+                    <p
+                      key={competency.code}
+                      className="font-body text-sm leading-relaxed text-mid"
+                    >
+                      <span className="font-semibold text-charcoal">
+                        {competency.code} ({competency.label}):
+                      </span>{" "}
+                      {competency.explanation}
+                    </p>
+                  ))}
+                </div>
               </div>
             )}
           </div>

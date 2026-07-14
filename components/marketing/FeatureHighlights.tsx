@@ -210,20 +210,33 @@ function FlashcardVisual() {
   }, []);
 
   return (
-    <div className="rounded-2xl bg-white p-4 shadow-lg" style={{ perspective: "1000px" }}>
+    <div
+      className="rounded-2xl bg-white p-4 shadow-lg"
+      style={{ perspective: "1000px", WebkitPerspective: "1000px" }}
+    >
       <div
-        className="relative h-[132px] transition-transform duration-500 ease-out [transform-style:preserve-3d]"
+        className="flip-card-inner relative h-[132px] transition-transform duration-500 ease-out"
         style={{ transform: `rotateY(${flipped ? 180 : 0}deg)` }}
       >
-        <div className="absolute inset-0 [backface-visibility:hidden]">
+        <div
+          className="flip-card-face absolute inset-0 transition-opacity duration-300"
+          style={{
+            opacity: flipped ? 0 : 1,
+            visibility: flipped ? "hidden" : "visible",
+          }}
+        >
           <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-primary">Term</p>
           <p className="font-heading text-[15px] font-extrabold text-charcoal">
             Glomerular Filtration Rate
           </p>
         </div>
         <div
-          className="absolute inset-0 [backface-visibility:hidden]"
-          style={{ transform: "rotateY(180deg)" }}
+          className="flip-card-face absolute inset-0 transition-opacity duration-300"
+          style={{
+            transform: "rotateY(180deg)",
+            opacity: flipped ? 1 : 0,
+            visibility: flipped ? "visible" : "hidden",
+          }}
         >
           <p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-charcoal/40">
             Definition

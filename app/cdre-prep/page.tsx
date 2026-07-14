@@ -11,10 +11,7 @@ import PricingTiers from "@/components/marketing/PricingTiers";
 import FaqSection from "@/components/marketing/FaqSection";
 import BottomCtaBand from "@/components/marketing/BottomCtaBand";
 import { cdreFeatureIcons, cdreSpotlights } from "@/lib/content/cdre";
-import {
-  testimonials,
-  cdreSpotlightTestimonial,
-} from "@/lib/content/testimonials";
+import { testimonials } from "@/lib/content/testimonials";
 import { comparisonPlans } from "@/lib/content/comparison";
 import { faqItems, FAQ_RANGES } from "@/lib/content/faq";
 import { buildFaqSchema } from "@/lib/seo";
@@ -219,17 +216,20 @@ export default function CdrePrepPage() {
         </div>
       </section>
 
-      {/* Social proof dark band */}
-      <section className="bg-charcoal py-20 sm:py-28">
-        <Reveal className="container-page mx-auto max-w-3xl text-center">
-          <p className="mx-auto mb-6 inline-block rounded-full bg-bright px-4 py-1.5 font-body text-sm font-semibold text-white">
-            {cdreSpotlightTestimonial.badge}
+      {/* Personal trainer statement band */}
+      <section className="relative overflow-hidden bg-charcoal py-20 sm:py-28">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_0%,rgba(84,181,27,0.18)_0%,transparent_100%)]"
+        />
+        <Reveal className="container-page relative mx-auto max-w-2xl text-center">
+          <p className="font-heading text-3xl font-extrabold leading-snug text-white sm:text-4xl lg:text-[42px]">
+            Your Personal Study Trainer for the{" "}
+            <span className="text-bright">CDRE &amp; KCAT</span>
           </p>
-          <p className="font-heading text-2xl font-bold leading-snug text-white sm:text-[28px]">
-            &ldquo;{cdreSpotlightTestimonial.quote}&rdquo;
-          </p>
-          <p className="mt-6 font-body text-sm text-white/60">
-            {cdreSpotlightTestimonial.name} — {cdreSpotlightTestimonial.role}
+          <p className="mx-auto mt-4 max-w-md font-body text-base leading-relaxed text-white/60">
+            One membership. Every tool, mapped to your exam date and how you
+            actually learn.
           </p>
         </Reveal>
       </section>

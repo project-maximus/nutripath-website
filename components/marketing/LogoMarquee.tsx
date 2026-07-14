@@ -23,6 +23,13 @@ const PARTNERS = [
     heightClass: "h-7 sm:h-8",
   },
   {
+    name: "Maxlab",
+    src: "/images/illustrations/maxlab-logo.png",
+    width: 929,
+    height: 345,
+    heightClass: "h-9 sm:h-10",
+  },
+  {
     name: "Business in the Streets",
     src: "/images/trusties/business-trimmed.png",
     width: 324,

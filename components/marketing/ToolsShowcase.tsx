@@ -148,13 +148,19 @@ function FlashcardsVisual() {
   return (
     <div
       className="w-full rounded-2xl border border-sage bg-white p-5 shadow-[0_8px_32px_rgba(0,0,0,0.14)] rotate-[-1.5deg] transition-transform duration-500 ease-out group-hover:rotate-0"
-      style={{ perspective: "800px" }}
+      style={{ perspective: "800px", WebkitPerspective: "800px" }}
     >
       <div
-        className="relative h-[72px] transition-transform duration-500 ease-out [transform-style:preserve-3d]"
+        className="flip-card-inner relative h-[72px] transition-transform duration-500 ease-out"
         style={{ transform: `rotateY(${flipped ? 180 : 0}deg)` }}
       >
-        <div className="absolute inset-0 flex flex-col justify-center [backface-visibility:hidden]">
+        <div
+          className="flip-card-face absolute inset-0 flex flex-col justify-center transition-opacity duration-300"
+          style={{
+            opacity: flipped ? 0 : 1,
+            visibility: flipped ? "hidden" : "visible",
+          }}
+        >
           <p className="font-heading text-sm font-extrabold text-primary">
             Glomerular filtration
           </p>
@@ -163,8 +169,12 @@ function FlashcardsVisual() {
           </p>
         </div>
         <div
-          className="absolute inset-0 flex items-center [backface-visibility:hidden]"
-          style={{ transform: "rotateY(180deg)" }}
+          className="flip-card-face absolute inset-0 flex items-center transition-opacity duration-300"
+          style={{
+            transform: "rotateY(180deg)",
+            opacity: flipped ? 1 : 0,
+            visibility: flipped ? "visible" : "hidden",
+          }}
         >
           <p className="text-center text-[13px] font-semibold text-charcoal">
             {FLASHCARD_QUESTION}

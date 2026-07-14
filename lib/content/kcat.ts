@@ -8,7 +8,7 @@ import {
 export const kcatFeatureIcons = [
   {
     title: "Live bootcamp sessions",
-    body: "Structured live sessions running mid to end July 2026 — not just a self-paced course.",
+    body: "Structured live sessions running Fall/Winter 2026 — not just a self-paced course.",
     icon: CalendarIcon,
     tone: "sage" as const,
   },
@@ -41,7 +41,7 @@ export const kcatSpotlights = [
   {
     eyebrow: "Live, cohort-based",
     title: "A bootcamp, not just another self-paced course",
-    body: "The KCAT Bootcamp runs mid to end July 2026 as a structured, live cohort experience — scheduled sessions, real accountability, and a community of candidates moving through the same material at the same time.",
+    body: "The KCAT Bootcamp runs Fall/Winter 2026 as a structured, live cohort experience — scheduled sessions, real accountability, and a community of candidates moving through the same material at the same time.",
   },
   {
     eyebrow: "Practice with purpose",

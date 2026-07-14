@@ -20,15 +20,6 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-export const cdreSpotlightTestimonial: Testimonial = {
-  badge: "CDRE Prep, Cohort Candidate",
-  badgeTone: "primary",
-  quote:
-    "Studying for the CDRE always felt like a second job nobody trained me for. NutriPath is the first resource that explained why I was getting questions wrong, not just that I was.",
-  name: "CDRE Candidate",
-  role: "NutriPath community member",
-};
-
 export const kcatSpotlightTestimonial: Testimonial = {
   badge: "KCAT Bootcamp Participant",
   badgeTone: "bright",

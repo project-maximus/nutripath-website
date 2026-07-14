@@ -13,11 +13,6 @@ const messages = [
     linkLabel: "join the waitlist",
     href: "#waitlist",
   },
-  {
-    text: "KCAT Live Bootcamp enrolment is now open",
-    linkLabel: "view the upcoming cohort",
-    href: "/kcat-bootcamp",
-  },
 ];
 
 const listeners = new Set<() => void>();

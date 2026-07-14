@@ -21,7 +21,7 @@ import { buildFaqSchema } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "KCAT Bootcamp | Live KCAT Prep for Internationally Educated Dietitians",
   description:
-    "A live, cohort-based KCAT bootcamp running mid to end July 2026 — built by registered dietitians for internationally educated dietitians preparing for the Knowledge and Competency Assessment Tool.",
+    "A live, cohort-based KCAT bootcamp running Fall/Winter 2026 — built by registered dietitians for internationally educated dietitians preparing for the Knowledge and Competency Assessment Tool.",
 };
 
 const orderedFaqItems = faqItems.slice(...FAQ_RANGES.kcat);
@@ -120,7 +120,7 @@ const spotlightVisuals = [
         Answering Practice Questions
       </p>
       <p className="mt-3 font-body text-xs font-semibold uppercase tracking-wide text-primary">
-        End of bootcamp · July 2026
+        End of bootcamp · Winter 2026
       </p>
     </div>
   </div>,
@@ -319,7 +319,7 @@ export default function KcatBootcampPage() {
           </p>
           <p className="mt-3 font-body text-sm leading-relaxed text-mid">
             Pricing and payment plan details are shared directly with the
-            waitlist ahead of the mid–end July 2026 bootcamp. Payment plans
+            waitlist ahead of the Fall/Winter 2026 bootcamp. Payment plans
             available — cost shouldn&rsquo;t be a barrier.
           </p>
           <a
@@ -338,7 +338,7 @@ export default function KcatBootcampPage() {
         <Reveal className="container-page mx-auto max-w-2xl text-center">
           <Image
             src="/images/illustrations/KCAT-cta.png"
-            alt="Illustration of a NutriPath candidate preparing for the KCAT Bootcamp Mid-End July cohort, with a laptop showing a live session, a calendar, and notes on the 1-hour live session on how to answer practice questions"
+            alt="Illustration of a NutriPath candidate preparing for the KCAT Bootcamp Fall/Winter cohort, with a laptop showing a live session, a calendar, and notes on the 1-hour live session on how to answer practice questions"
             width={1536}
             height={1024}
             className="mx-auto h-auto w-full max-w-lg"

@@ -141,7 +141,7 @@ const rawFaqItems: RawFaqItem[] = [
   {
     question: "How much does it cost?",
     answer:
-      "Canadian Dollars (CAD) 499 as the current founding-member rate for Summer 2026, rising to a planned CAD 999 for future cohorts.",
+      "Founding-member pricing for Summer 2026 will be shared directly with the waitlist, with rates increasing for future cohorts.",
     iconKey: "payment",
   },
   {
@@ -166,7 +166,7 @@ const rawFaqItems: RawFaqItem[] = [
   {
     question: "Is there a 1-on-1 coaching add-on?",
     answer:
-      "Yes — the 1-to-1 Dietetic Deep Dive is available as an optional add-on at approximately CAD 100–150 per hour for personalized topic support.",
+      "Yes — the 1-to-1 Dietetic Deep Dive is available as an optional per-hour add-on for personalized topic support. Contact us for current rates.",
     iconKey: "target",
   },
   {

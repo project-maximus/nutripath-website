@@ -27,18 +27,18 @@ export default function BottomCtaBand() {
 
           <div className="flex flex-col gap-4 rounded-2xl border-2 border-primary bg-white/5 p-8">
             <h3 className="font-heading text-lg font-bold text-white">
-              KCAT Bootcamp — Mid–End July 2026
+              Explore CDRE Prep
             </h3>
             <p className="font-body text-sm leading-relaxed text-white/70">
-              Focused KCAT prep. Live sessions, community, mock KCAT, and a
-              1-hour live session on how to answer practice questions,
-              held at the end of the bootcamp.
+              Personalized study plans, mock exams, and an AI tutor — see
+              exactly what&rsquo;s included before you join.
             </p>
-            <EmailCaptureForm
-              ctaLabel="Join the KCAT waitlist"
-              variant="dark"
-              className="mt-auto"
-            />
+            <a
+              href="/cdre-prep"
+              className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-center font-body text-sm font-semibold text-primary transition-colors hover:bg-sage"
+            >
+              See the CDRE program →
+            </a>
           </div>
 
           <div className="flex flex-col gap-4 rounded-2xl bg-white/5 p-8">

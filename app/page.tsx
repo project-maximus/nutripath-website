@@ -68,20 +68,13 @@ export default function HomePage() {
             Learn. Practice. Pass.
           </p>
           <p className="mx-auto mt-6 max-w-xl font-body text-lg leading-relaxed text-white/85">
-            Personalized CDRE and KCAT prep, built by registered dietitians
-            who&rsquo;ve sat the exam themselves — no guesswork, just a
-            clear path forward.
+            Built by registered dietitians who&rsquo;ve sat the exam
+            themselves — no guesswork, just a clear path forward.
           </p>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-5">
             <Button href="https://app.nutripath.ca" external variant="white">
-              Join the Founding Cohort
+              Start your free trial
             </Button>
-            <a
-              href="/kcat-bootcamp"
-              className="font-body text-base font-semibold text-white underline underline-offset-4 hover:text-bright"
-            >
-              Explore the KCAT Bootcamp
-            </a>
           </div>
         </div>
       </section>

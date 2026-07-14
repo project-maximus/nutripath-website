@@ -58,6 +58,25 @@
     margin-inline: auto;
     padding-inline: 1.25rem;
   }
+
+  /*
+   * Flip-card 3D helpers. Tailwind's arbitrary-value classes
+   * ([transform-style:preserve-3d], [backface-visibility:hidden]) only emit
+   * the unprefixed property. Safari and some Chromium/Firefox builds ignore
+   * unprefixed backface-visibility, so the "back" face stays visible —
+   * showing as mirrored, upside-down text bleeding through the front face.
+   * These classes always pair the standard property with its -webkit-
+   * prefixed twin so the back face is reliably hidden everywhere.
+   */
+  .flip-card-inner {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  .flip-card-face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
 }
 
 /* Scroll-reveal: JS toggles .is-visible after IntersectionObserver fires */

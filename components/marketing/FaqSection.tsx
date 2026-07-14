@@ -114,7 +114,7 @@ export default function FaqSection({ items }: { items: FaqItem[] }) {
                     <h3 className="mt-4 font-heading text-lg font-bold text-charcoal">
                       {item.question}
                     </h3>
-                    <p className="mt-2 line-clamp-4 font-body text-sm leading-relaxed text-mid">
+                    <p className="mt-2 font-body text-sm leading-relaxed text-mid">
                       {item.answer}
                     </p>
                   </div>

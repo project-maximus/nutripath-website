@@ -216,21 +216,31 @@ function FlashcardVisual() {
     <div className="mt-6 flex flex-col items-center">
       <div
         className="relative h-[72px] w-full max-w-[200px]"
-        style={{ perspective: "800px" }}
+        style={{ perspective: "800px", WebkitPerspective: "800px" }}
       >
         <div className="absolute inset-x-3 top-2 h-16 rounded-xl bg-sage" />
         <div
-          className="absolute inset-0 transition-transform duration-500 ease-out [transform-style:preserve-3d]"
+          className="flip-card-inner absolute inset-0 transition-transform duration-500 ease-out"
           style={{ transform: `rotateY(${flipped ? 180 : 0}deg)` }}
         >
-          <div className="absolute inset-0 flex items-center justify-center rounded-xl border border-[#E5E7E0] bg-white px-3 shadow-sm [backface-visibility:hidden]">
+          <div
+            className="flip-card-face absolute inset-0 flex items-center justify-center rounded-xl border border-[#E5E7E0] bg-white px-3 shadow-sm transition-opacity duration-300"
+            style={{
+              opacity: flipped ? 0 : 1,
+              visibility: flipped ? "hidden" : "visible",
+            }}
+          >
             <p className="text-center font-body text-xs font-semibold text-charcoal">
               {FLASHCARD.front}
             </p>
           </div>
           <div
-            className="absolute inset-0 flex items-center justify-center rounded-xl border border-primary bg-sage px-3 shadow-sm [backface-visibility:hidden]"
-            style={{ transform: "rotateY(180deg)" }}
+            className="flip-card-face absolute inset-0 flex items-center justify-center rounded-xl border border-primary bg-sage px-3 shadow-sm transition-opacity duration-300"
+            style={{
+              transform: "rotateY(180deg)",
+              opacity: flipped ? 1 : 0,
+              visibility: flipped ? "visible" : "hidden",
+            }}
           >
             <p className="text-center font-body text-xs font-semibold text-primary">
               {FLASHCARD.back}
