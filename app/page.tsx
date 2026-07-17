@@ -61,8 +61,11 @@ export default function HomePage() {
           <span className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-3.5 py-1.5 font-body text-sm font-semibold text-white backdrop-blur-md">
             Built by dietitians, for dietitians
           </span>
-          <h1 className="mx-auto mt-6 max-w-3xl font-heading text-5xl font-extrabold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
-            Accessible dietetic success.
+          <h1 className="mx-auto mt-6 max-w-4xl text-balance font-heading text-5xl font-extrabold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
+            <span className="text-bright drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)]">
+              CDRE &amp; KCAT
+            </span>{" "}
+            prep, for how you actually learn.
           </h1>
           <p className="mx-auto mt-4 font-heading text-2xl font-bold text-bright drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)] sm:text-3xl">
             Learn. Practice. Pass.

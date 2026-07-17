@@ -5,6 +5,7 @@ import SkipLink from "@/components/layout/SkipLink";
 import AnnouncementBar from "@/components/layout/AnnouncementBar";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import AccessibilityWidget from "@/components/layout/AccessibilityWidget";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -55,6 +56,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <AccessibilityWidget />
       </body>
     </html>
   );
