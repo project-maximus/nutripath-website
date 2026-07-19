@@ -93,6 +93,29 @@ export default function ResourcesPage() {
               </span>
             </Link>
           </Reveal>
+
+          {/* Webinars teaser */}
+          <Reveal className="mt-6 lg:max-w-4xl lg:mx-auto">
+            <Link
+              href="/webinars"
+              className="group flex items-center justify-between rounded-2xl border border-[#E5E7E0] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <div>
+                <p className="font-body text-xs font-semibold uppercase tracking-wide text-primary">
+                  New &middot; Live &amp; free
+                </p>
+                <h3 className="mt-1 font-heading text-lg font-bold text-charcoal transition-colors group-hover:text-primary">
+                  Live Webinars with Our Partners
+                </h3>
+                <p className="mt-1 font-body text-sm text-mid">
+                  Real strategies, real Q&amp;A — join live or watch the recording after.
+                </p>
+              </div>
+              <span className="ml-6 flex-shrink-0 font-body text-sm font-semibold text-primary">
+                Explore →
+              </span>
+            </Link>
+          </Reveal>
         </div>
       </section>
 
