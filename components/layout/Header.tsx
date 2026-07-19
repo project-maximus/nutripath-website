@@ -19,10 +19,7 @@ type MobileLink = { label: string; href?: string; soon?: boolean };
 
 const mobileLinks: MobileLink[] = [
   { label: "Home", href: "/" },
-  { label: "Home V1.1", href: "/home-v1-1" },
-  { label: "Home V1.2", href: "/home-v1-2" },
   { label: "CDRE Prep", href: "/cdre-prep" },
-  { label: "CDRE Prep V2", href: "/cdre-prep/v2" },
   { label: "KCAT Bootcamp", href: "/kcat-bootcamp" },
   { label: "KCAT Prep", soon: true },
   { label: "Resources", href: "/resources" },
@@ -32,10 +29,8 @@ const mobileLinks: MobileLink[] = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [homeOpen, setHomeOpen] = useState(false);
   const [programsOpen, setProgramsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const homeDropdownRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -49,19 +44,12 @@ export default function Header() {
   useEffect(() => {
     function onClickOutside(event: MouseEvent) {
       const target = event.target as Node;
-      if (
-        homeDropdownRef.current &&
-        !homeDropdownRef.current.contains(target)
-      ) {
-        setHomeOpen(false);
-      }
       if (dropdownRef.current && !dropdownRef.current.contains(target)) {
         setProgramsOpen(false);
       }
     }
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setHomeOpen(false);
         setProgramsOpen(false);
       }
     }
@@ -106,52 +94,12 @@ export default function Header() {
           aria-label="Primary"
           className="hidden items-center gap-1 font-body text-[15px] font-medium text-charcoal lg:flex"
         >
-          <div className="relative" ref={homeDropdownRef}>
-            <button
-              type="button"
-              aria-expanded={homeOpen}
-              aria-haspopup="true"
-              onClick={() => setHomeOpen((open) => !open)}
-              className="flex items-center gap-1.5 rounded-full px-4 py-2.5 transition-colors hover:bg-offwhite"
-            >
-              Home
-              <svg
-                width="11"
-                height="11"
-                viewBox="0 0 12 12"
-                fill="none"
-                aria-hidden="true"
-                className={`transition-transform ${homeOpen ? "rotate-180" : ""}`}
-              >
-                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-            {homeOpen && (
-              <div className="absolute left-0 top-full mt-2 w-48 rounded-2xl border border-[#E5E7E0] bg-white p-2 shadow-lg">
-                <Link
-                  href="/"
-                  onClick={() => setHomeOpen(false)}
-                  className="block rounded-xl px-4 py-2.5 hover:bg-offwhite"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/home-v1-1"
-                  onClick={() => setHomeOpen(false)}
-                  className="block rounded-xl px-4 py-2.5 hover:bg-offwhite"
-                >
-                  Home V1.1
-                </Link>
-                <Link
-                  href="/home-v1-2"
-                  onClick={() => setHomeOpen(false)}
-                  className="block rounded-xl px-4 py-2.5 hover:bg-offwhite"
-                >
-                  Home V1.2
-                </Link>
-              </div>
-            )}
-          </div>
+          <Link
+            href="/"
+            className="rounded-full px-4 py-2.5 transition-colors hover:bg-offwhite"
+          >
+            Home
+          </Link>
 
           <div className="relative" ref={dropdownRef}>
             <button
@@ -181,13 +129,6 @@ export default function Header() {
                   className="block rounded-xl px-4 py-2.5 hover:bg-offwhite"
                 >
                   CDRE Prep
-                </Link>
-                <Link
-                  href="/cdre-prep/v2"
-                  onClick={() => setProgramsOpen(false)}
-                  className="block rounded-xl px-4 py-2.5 hover:bg-offwhite"
-                >
-                  CDRE Prep V2
                 </Link>
                 <Link
                   href="/kcat-bootcamp"
