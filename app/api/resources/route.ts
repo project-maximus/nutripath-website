@@ -1,14 +1,13 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
 const GUIDES = {
   cdre: {
-    file: "CDRE Study Tips NutriPath Canada-2.pdf",
-    filename: "CDRE-Study-Tips-NutriPath.pdf",
+    path: "/guides/CDRE-Study-Tips-NutriPath.pdf",
     label: "CDRE Study Tips",
   },
   kcat: {
-    file: "KCAT Ethics Study Guide.pdf",
-    filename: "KCAT-Ethics-Study-Guide-NutriPath.pdf",
+    path: "/guides/KCAT-Ethics-Study-Guide-NutriPath.pdf",
     label: "KCAT Ethics Study Guide",
   },
 } as const;
@@ -36,31 +35,28 @@ export async function POST(request: Request) {
   }
 
   const chosen = GUIDES[guide];
+  const downloadUrl = new URL(chosen.path, request.url).toString();
 
-  // ─── Resend integration (wire when ready) ────────────────────────────────
-  // import { Resend } from "resend";
-  // import path from "path";
-  // import fs from "fs";
-  //
-  // const resend = new Resend(process.env.RESEND_API_KEY);
-  // const pdf = fs.readFileSync(path.join(process.cwd(), "resourses", chosen.file));
-  //
-  // await resend.emails.send({
-  //   from: "NutriPath Canada <resources@nutripath.ca>",
-  //   to: email,
-  //   subject: `Your free guide: ${chosen.label}`,
-  //   html: `
-  //     <p>Hi there,</p>
-  //     <p>Thanks for downloading from NutriPath. Your free guide is attached.</p>
-  //     <p><strong>${chosen.label}</strong></p>
-  //     <p>Good luck with your preparation. We're rooting for you.</p>
-  //     <p>— The NutriPath Team</p>
-  //   `,
-  //   attachments: [{ filename: chosen.filename, content: pdf }],
-  // });
-  // ─────────────────────────────────────────────────────────────────────────
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const { error } = await resend.emails.send({
+    from: "NutriPath Canada <resources@nutripath.ca>",
+    to: email,
+    subject: `Your free guide: ${chosen.label}`,
+    html: `
+      <p>Hi there,</p>
+      <p>Thanks for downloading from NutriPath. Here's your free guide:</p>
+      <p><a href="${downloadUrl}"><strong>${chosen.label} (PDF)</strong></a></p>
+      <p>Good luck with your preparation. We're rooting for you.</p>
+      <p>— The NutriPath Team</p>
+    `,
+  });
 
-  console.log(`[resources] "${chosen.label}" requested by: ${email}`);
+  if (error) {
+    console.error(`[resources] Resend error for ${email}:`, error);
+    return NextResponse.json({ error: "Failed to send email." }, { status: 502 });
+  }
+
+  console.log(`[resources] "${chosen.label}" sent to: ${email}`);
 
   return NextResponse.json({ ok: true });
 }
