@@ -57,7 +57,7 @@ export default function AnnouncementBar() {
         key={index}
         className="mx-auto flex max-w-[calc(100%-2.5rem)] flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5 animate-announcement-fade"
       >
-        <LeafIcon className="h-3.5 w-3.5 flex-shrink-0" />
+        <LeafIcon className="hidden h-3.5 w-3.5 flex-shrink-0 sm:inline-flex" />
         {message.text} —{" "}
         <Link href={message.href} className="underline hover:opacity-80">
           {message.linkLabel}
@@ -67,7 +67,7 @@ export default function AnnouncementBar() {
         type="button"
         aria-label="Dismiss announcement"
         onClick={dismiss}
-        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1.5 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        className="absolute right-3 top-2.5 rounded-full p-1.5 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
       >
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path
