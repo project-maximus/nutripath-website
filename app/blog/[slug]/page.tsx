@@ -70,9 +70,7 @@ export default async function BlogPostPage({ params }: Params) {
 
       <section className="py-16 sm:py-24">
         <div className="container-page mx-auto max-w-2xl">
-          <Reveal>
-            <BlogPostBody sections={post.body} />
-          </Reveal>
+          <BlogPostBody sections={post.body} />
 
           <Reveal className="mt-14 rounded-3xl border-2 border-primary bg-white p-8 text-center">
             <p className="font-heading text-xl font-bold text-charcoal">

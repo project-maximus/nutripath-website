@@ -40,7 +40,10 @@ export default function Reveal({
           }
         });
       },
-      { threshold: 0.15 }
+      // threshold is a fraction of the element's OWN height, so a fixed 0.15
+      // can never be satisfied by tall content (e.g. a full article body)
+      // taller than ~6.7x the viewport — use 0 so any entry into view counts.
+      { threshold: 0 }
     );
 
     observer.observe(el);
