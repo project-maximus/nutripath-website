@@ -61,9 +61,12 @@ export async function POST(request: Request) {
     }
 
     console.log(`[resources] "${chosen.label}" sent to: ${email}`);
-    await notifyAdmin(resend, `New guide request: ${chosen.label}`, [
-      `<strong>${email}</strong> just requested the <strong>${chosen.label}</strong> guide.`,
-    ]);
+    await notifyAdmin(
+      resend,
+      `New guide request: ${chosen.label}`,
+      email,
+      `Requested the ${chosen.label} guide.`
+    );
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error(`[resources] Unexpected error sending to ${email}:`, err);

@@ -38,9 +38,12 @@ export async function POST(request: Request) {
     }
 
     console.log(`[webinars] notify-me signup: ${email}`);
-    await notifyAdmin(resend, "New webinar notify-list signup", [
-      `<strong>${email}</strong> just joined the webinar notify list.`,
-    ]);
+    await notifyAdmin(
+      resend,
+      "New webinar notify-list signup",
+      email,
+      "Joined the webinar notify list — will get an email the moment the first session is announced."
+    );
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error(`[webinars] Unexpected error sending to ${email}:`, err);

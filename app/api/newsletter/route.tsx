@@ -38,9 +38,12 @@ export async function POST(request: Request) {
     }
 
     console.log(`[newsletter] signup: ${email}`);
-    await notifyAdmin(resend, "New newsletter signup", [
-      `<strong>${email}</strong> just joined the "Stay in the loop" email list.`,
-    ]);
+    await notifyAdmin(
+      resend,
+      "New newsletter signup",
+      email,
+      'Joined the "Stay in the loop" email list.'
+    );
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error(`[newsletter] Unexpected error sending to ${email}:`, err);
