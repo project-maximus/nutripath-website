@@ -44,7 +44,7 @@ const rawFaqItems: RawFaqItem[] = [
   {
     question: "Do you offer a corporate or group practice membership rate?",
     answer:
-      "Not yet published, but our small-cohort KCAT Bootcamp naturally supports group enrollment — reach out to discuss a group rate for your team.",
+      "Not yet published, but our small-cohort CDRE and KCAT programs naturally support group enrollment — reach out to discuss a group rate for your team.",
     iconKey: "payment",
   },
   {

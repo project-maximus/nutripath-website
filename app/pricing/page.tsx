@@ -23,9 +23,9 @@ import { faqItems } from "@/lib/content/faq";
 import { buildFaqSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Pricing | NutriPath CDRE Platform",
+  title: "Pricing | NutriPath CDRE & KCAT Prep",
   description:
-    "Transparent, flexible pricing for NutriPath's CDRE platform. Payment plans available. Join the founding cohort waitlist for September 2026 founding member pricing.",
+    "Transparent, flexible pricing for NutriPath's CDRE and KCAT prep programs. Payment plans available. Join the founding cohort waitlist for September 2026 founding member pricing.",
 };
 
 // Curated payment/policy questions, spanning the general, KCAT, and CDRE FAQ groups.
@@ -216,8 +216,9 @@ export default function PricingPage() {
             We know prep costs add up — especially after document
             assessment fees, the KCAT, and everything else the journey to
             registration demands. That&rsquo;s why payment plans are
-            available for the CDRE Platform, and why founding members will
-            see full pricing and payment options before the cohort opens.
+            available across our CDRE and KCAT programs, and why founding
+            members will see full pricing and payment options before the
+            cohort opens.
           </p>
           <ul className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 font-body text-sm text-mid">
             <li>✓ Payment plans available</li>

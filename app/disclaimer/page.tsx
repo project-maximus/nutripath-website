@@ -27,10 +27,11 @@ export default function DisclaimerPage() {
               About Our Resources
             </h2>
             <p className="mt-3 text-mid">
-              The NutriPath KCAT Study Guide and all related materials are
-              independent educational resources designed to support candidates
-              preparing for the Knowledge and Competency Assessment Tool
-              (KCAT) in Canada.
+              NutriPath&rsquo;s CDRE prep materials, KCAT Study Guide, and all
+              related resources are independent educational resources
+              designed to support candidates preparing for the Canadian
+              Dietetic Registration Examination (CDRE) and the Knowledge and
+              Competency Assessment Tool (KCAT) in Canada.
             </p>
           </div>
 
