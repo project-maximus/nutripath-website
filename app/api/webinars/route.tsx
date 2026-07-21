@@ -16,21 +16,30 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "A valid email is required." }, { status: 400 });
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
-  const { error } = await resend.emails.send({
-    from: "NutriPath Canada <webinars@nutripath.ca>",
-    replyTo: "berin.arikan@nutripath.ca",
-    to: email,
-    subject: "You're on the webinar notify list",
-    react: <WebinarNotifyEmail />,
-  });
-
-  if (error) {
-    console.error(`[webinars] Resend error for ${email}:`, error);
-    return NextResponse.json({ error: "Failed to send email." }, { status: 502 });
+  if (!process.env.RESEND_API_KEY) {
+    console.error("[webinars] RESEND_API_KEY is not set in this environment.");
+    return NextResponse.json({ error: "Email service is not configured." }, { status: 500 });
   }
 
-  console.log(`[webinars] notify-me signup: ${email}`);
+  try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const { error } = await resend.emails.send({
+      from: "NutriPath Canada <webinars@nutripath.ca>",
+      replyTo: "berin.arikan@nutripath.ca",
+      to: email,
+      subject: "You're on the webinar notify list",
+      react: <WebinarNotifyEmail />,
+    });
 
-  return NextResponse.json({ ok: true });
+    if (error) {
+      console.error(`[webinars] Resend error for ${email}:`, error);
+      return NextResponse.json({ error: "Failed to send email." }, { status: 502 });
+    }
+
+    console.log(`[webinars] notify-me signup: ${email}`);
+    return NextResponse.json({ ok: true });
+  } catch (err) {
+    console.error(`[webinars] Unexpected error sending to ${email}:`, err);
+    return NextResponse.json({ error: "Failed to send email." }, { status: 500 });
+  }
 }
