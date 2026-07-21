@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { GuideDeliveryEmail } from "@/emails/GuideDeliveryEmail";
 import { SITE_URL } from "@/lib/seo";
+import { notifyAdmin } from "@/lib/notifyAdmin";
 
 const GUIDES = {
   cdre: {
@@ -60,6 +61,9 @@ export async function POST(request: Request) {
     }
 
     console.log(`[resources] "${chosen.label}" sent to: ${email}`);
+    await notifyAdmin(resend, `New guide request: ${chosen.label}`, [
+      `<strong>${email}</strong> just requested the <strong>${chosen.label}</strong> guide.`,
+    ]);
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error(`[resources] Unexpected error sending to ${email}:`, err);

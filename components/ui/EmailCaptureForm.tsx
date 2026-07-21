@@ -23,12 +23,13 @@ export default function EmailCaptureForm({
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<
-    "idle" | "error" | "agreement-error" | "success"
+    "idle" | "error" | "agreement-error" | "loading" | "success" | "submit-error"
   >("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const isDark = variant === "dark";
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!EMAIL_PATTERN.test(email)) {
       setStatus("error");
@@ -38,7 +39,25 @@ export default function EmailCaptureForm({
       setStatus("agreement-error");
       return;
     }
-    setStatus("success");
+
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setErrorMsg(data.error ?? "Something went wrong.");
+        setStatus("submit-error");
+        return;
+      }
+      setStatus("success");
+    } catch {
+      setErrorMsg("Network error. Please try again.");
+      setStatus("submit-error");
+    }
   }
 
   if (status === "success") {
@@ -95,10 +114,16 @@ export default function EmailCaptureForm({
       </div>
       <button
         type="submit"
-        className="min-h-[44px] whitespace-nowrap rounded-full bg-primary px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-forest"
+        disabled={status === "loading"}
+        className="min-h-[44px] whitespace-nowrap rounded-full bg-primary px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-forest disabled:opacity-60"
       >
-        {ctaLabel}
+        {status === "loading" ? "Joining…" : ctaLabel}
       </button>
+      {status === "submit-error" && (
+        <p role="alert" className={`text-sm ${isDark ? "text-red-200" : "text-red-600"}`}>
+          {errorMsg}
+        </p>
+      )}
       <div className="flex items-start gap-2.5">
         <input
           id={agreeId}
