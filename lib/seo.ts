@@ -1,5 +1,7 @@
 import type { FaqItem } from "@/lib/content/faq";
 
+export const SITE_URL = "https://nutripath.ca";
+
 export function buildFaqSchema(items: FaqItem[]) {
   return {
     "@context": "https://schema.org",

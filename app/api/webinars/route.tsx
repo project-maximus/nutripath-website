@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { WebinarNotifyEmail } from "@/emails/WebinarNotifyEmail";
 
 export async function POST(request: Request) {
   let email: string;
@@ -18,14 +19,10 @@ export async function POST(request: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const { error } = await resend.emails.send({
     from: "NutriPath Canada <webinars@nutripath.ca>",
+    replyTo: "berin.arikan@nutripath.ca",
     to: email,
     subject: "You're on the webinar notify list",
-    html: `
-      <p>Hi there,</p>
-      <p>Thanks for your interest in NutriPath's partner webinars. We'll
-      email you the moment the first session is announced.</p>
-      <p>— The NutriPath Team</p>
-    `,
+    react: <WebinarNotifyEmail />,
   });
 
   if (error) {
