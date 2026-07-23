@@ -139,7 +139,7 @@ export default function CdrePrepPage() {
             twice a year with a three-attempt lifetime cap.
           </p>
           <div className="mt-8 flex justify-center">
-            <Button href="https://app.nutripath.ca" external variant="white">
+            <Button href="/coming-soon" variant="white">
               Secure your founding spot
             </Button>
           </div>
@@ -312,7 +312,7 @@ export default function CdrePrepPage() {
             time.
           </p>
           <div className="mt-8 flex justify-center">
-            <Button href="https://app.nutripath.ca" external>
+            <Button href="/coming-soon">
               Secure your founding spot
             </Button>
           </div>

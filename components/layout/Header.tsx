@@ -163,15 +163,14 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <a
-            href="https://app.nutripath.ca"
-            rel="noopener"
+          <Link
+            href="/coming-soon"
             className="rounded-full border-2 border-primary px-5 py-2.5 font-body text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
           >
             Login
-          </a>
+          </Link>
           <Link
-            href="#waitlist"
+            href="/coming-soon"
             className="rounded-full bg-primary px-5 py-2.5 font-body text-sm font-semibold text-white transition-colors hover:bg-forest"
           >
             Join the Waitlist
@@ -242,15 +241,15 @@ export default function Header() {
               : "0ms",
           }}
         >
-          <a
-            href="https://app.nutripath.ca"
-            rel="noopener"
+          <Link
+            href="/coming-soon"
+            onClick={() => setMobileOpen(false)}
             className="rounded-full border-2 border-white px-5 py-3.5 text-center font-semibold text-white"
           >
             Login
-          </a>
+          </Link>
           <Link
-            href="#waitlist"
+            href="/coming-soon"
             onClick={() => setMobileOpen(false)}
             className="rounded-full bg-white px-5 py-3.5 text-center font-semibold text-primary"
           >

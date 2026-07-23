@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito, Lexend } from "next/font/google";
 import "./globals.css";
-import SkipLink from "@/components/layout/SkipLink";
-import AnnouncementBar from "@/components/layout/AnnouncementBar";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import AccessibilityWidget from "@/components/layout/AccessibilityWidget";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -49,14 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${nunito.variable} ${lexend.variable}`}>
       <body className="flex min-h-screen flex-col font-body text-charcoal antialiased">
-        <SkipLink />
-        <AnnouncementBar />
-        <Header />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-        <AccessibilityWidget />
+        {children}
       </body>
     </html>
   );

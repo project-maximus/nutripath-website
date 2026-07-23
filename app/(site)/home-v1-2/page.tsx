@@ -3,6 +3,7 @@ import Image from "next/image";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import LogoMarquee from "@/components/marketing/LogoMarquee";
+import FeatureHighlights from "@/components/marketing/FeatureHighlights";
 import HowItWorksTimeline from "@/components/marketing/HowItWorksTimeline";
 import StatRow from "@/components/marketing/StatRow";
 import FreeResourcesPitch from "@/components/marketing/FreeResourcesPitch";
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function HomeV11Page() {
+export default function HomeV12Page() {
   return (
     <>
       <script
@@ -42,45 +43,55 @@ export default function HomeV11Page() {
         }}
       />
 
-      {/* Hero — variant: full-bleed background image with gradient overlay */}
-      <section className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="/images/illustrations/nutripath-hero.png"
-            alt="Illustration of a dietitian candidate studying at a laptop, surrounded by icons for an AI tutor, flashcards, progress tracking, community, a study checklist, and a path to the summit of a mountain"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-top"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-forest/95 from-0% via-forest/30 via-50% to-forest/92 to-100%" />
-          <div className="absolute inset-0 bg-gradient-to-t from-forest/55 via-transparent to-transparent" />
+      {/* Hero — variant: calm glassmorphic split, fresh illustration */}
+      <section className="relative overflow-hidden py-16 sm:py-24">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10"
+        >
+          <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-bright/30 blur-3xl" />
+          <div className="absolute right-0 top-1/4 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
+          <div className="absolute -bottom-16 left-1/3 h-72 w-72 rounded-full bg-sage blur-3xl" />
         </div>
-
-        <div className="container-page relative flex min-h-[560px] items-center py-20 sm:min-h-[620px] sm:py-24 lg:min-h-[680px]">
-          <div className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
-            <span className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-3.5 py-1.5 font-body text-sm font-semibold text-white backdrop-blur-md">
+        <div className="container-page grid items-center gap-12 text-center lg:grid-cols-2 lg:gap-16 lg:text-left">
+          <div className="flex flex-col items-center lg:items-start">
+            <span className="inline-flex items-center rounded-full bg-sage px-3.5 py-1.5 font-body text-sm font-semibold text-primary shadow-sm">
               Built by dietitians, for dietitians
             </span>
-            <h1 className="mt-5 font-heading text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl">
-              Walk into the CDRE feeling ready.
+            <h1 className="mt-5 font-heading text-4xl font-extrabold text-charcoal sm:text-5xl lg:text-6xl">
+              Exam ready feels like this.
             </h1>
-            <p className="mt-5 font-body text-lg leading-relaxed text-white/85">
-              Personalized CDRE and KCAT prep, built by registered
-              dietitians who&rsquo;ve sat the exam themselves. Accessible,
-              honest, and designed for how you actually learn — no
-              guesswork, just a clear path forward.
+            <p className="mt-5 max-w-lg font-body text-lg leading-relaxed text-mid">
+              Personalized CDRE and KCAT prep, built by registered dietitians
+              who&rsquo;ve sat the exam themselves. Accessible, honest, and
+              designed for how you actually learn — no guesswork, just a
+              clear path forward.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-5 lg:justify-start">
-              <Button href="https://app.nutripath.ca" external variant="white">
+              <Button href="/coming-soon">
                 Join the Founding Cohort
               </Button>
               <a
                 href="/kcat-bootcamp"
-                className="font-body text-base font-semibold text-white underline underline-offset-4 hover:text-bright"
+                className="font-body text-base font-semibold text-primary underline underline-offset-4 hover:text-forest"
               >
                 Explore the KCAT Bootcamp
               </a>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-3xl bg-white p-3 shadow-2xl">
+              <div className="relative overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/illustrations/footer-CTA2-cropped.png"
+                  alt="Illustration of a confident NutriPath candidate, with notes reading 'Weak areas are improving' and 'You're exam ready'"
+                  width={899}
+                  height={545}
+                  priority
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="h-auto w-full"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -97,6 +108,8 @@ export default function HomeV11Page() {
           </div>
         </div>
       </section>
+
+      <FeatureHighlights />
 
       {/* Platform tour */}
       <section className="bg-offwhite py-20 sm:py-28">
@@ -242,7 +255,7 @@ export default function HomeV11Page() {
             <ComparisonTable plans={comparisonPlans} />
           </Reveal>
           <div className="mt-10 text-center">
-            <Button href="https://app.nutripath.ca" external size="sm">
+            <Button href="/coming-soon" size="sm">
               Join the Founding Cohort
             </Button>
           </div>
@@ -344,7 +357,7 @@ export default function HomeV11Page() {
             pace.
           </p>
           <div className="mt-8 flex justify-center">
-            <Button href="https://app.nutripath.ca" external>
+            <Button href="/coming-soon">
               Join the Founding Cohort
             </Button>
           </div>

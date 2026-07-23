@@ -160,7 +160,7 @@ export default function KcatBootcampPage() {
           </p>
           <div className="mt-8 flex justify-center">
             <a
-              href="#waitlist"
+              href="/coming-soon"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-center font-body text-base font-semibold text-primary transition-colors hover:bg-sage"
             >
               Join the KCAT Bootcamp waitlist
@@ -323,7 +323,7 @@ export default function KcatBootcampPage() {
             available — cost shouldn&rsquo;t be a barrier.
           </p>
           <a
-            href="#waitlist"
+            href="/coming-soon"
             className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-body text-sm font-semibold text-white transition-colors hover:bg-forest"
           >
             Join the KCAT waitlist
@@ -352,7 +352,7 @@ export default function KcatBootcampPage() {
           </p>
           <div className="mt-8 flex justify-center">
             <a
-              href="#waitlist"
+              href="/coming-soon"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-center font-body text-base font-semibold text-white transition-colors hover:bg-forest"
             >
               Join the KCAT Bootcamp waitlist

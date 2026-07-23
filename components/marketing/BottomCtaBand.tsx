@@ -17,7 +17,7 @@ export default function BottomCtaBand() {
               into the platform. Your name in the story.
             </p>
             <a
-              href="https://app.nutripath.ca"
+              href="/coming-soon"
               rel="noopener"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-center font-body text-sm font-semibold text-primary transition-colors hover:bg-sage"
             >

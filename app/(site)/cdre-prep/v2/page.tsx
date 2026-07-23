@@ -97,7 +97,7 @@ export default function CdrePrepV2Page() {
             twice a year with a three-attempt lifetime cap.
           </p>
           <div className="mt-8 flex justify-center">
-            <Button href="https://app.nutripath.ca" external variant="white">
+            <Button href="/coming-soon" variant="white">
               Secure your founding spot
             </Button>
           </div>
@@ -270,7 +270,7 @@ export default function CdrePrepV2Page() {
             exam day.
           </p>
           <div className="mt-8 flex justify-center">
-            <Button href="https://app.nutripath.ca" external>
+            <Button href="/coming-soon">
               Secure your founding spot
             </Button>
           </div>

@@ -29,7 +29,7 @@ const tiers: Tier[] = [
       yearly: "Billed yearly — better value, once pricing launches",
     },
     ctaLabel: "Join the waitlist",
-    ctaHref: "#waitlist",
+    ctaHref: "/coming-soon",
     features: [
       "Personalized study plan",
       "Multi-format content (text, video, audio, flashcards)",
@@ -46,7 +46,7 @@ const tiers: Tier[] = [
       yearly: "Billed yearly — better value, once pricing launches",
     },
     ctaLabel: "Secure your founding spot",
-    ctaHref: "https://app.nutripath.ca",
+    ctaHref: "/coming-soon",
     external: true,
     highlighted: true,
     features: [

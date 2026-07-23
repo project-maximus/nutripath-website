@@ -286,7 +286,8 @@ export default function KcatQuiz() {
             dietitian explaining the reasoning behind every answer.
           </p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
-            <Button href="#waitlist">Join the KCAT Bootcamp waitlist</Button>
+
+            <Button href="/coming-soon">Join the KCAT Bootcamp waitlist</Button>
             <button
               type="button"
               onClick={handleRestart}

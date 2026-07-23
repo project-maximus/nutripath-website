@@ -96,7 +96,7 @@ export default function PricingPage() {
             </p>
 
             <a
-              href="#waitlist"
+              href="/coming-soon"
               className="mt-7 flex w-full max-w-md items-center gap-4 rounded-2xl bg-offwhite p-4 text-left transition-colors hover:bg-sage/60"
             >
               <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white text-primary shadow-sm">
@@ -115,7 +115,7 @@ export default function PricingPage() {
             </a>
 
             <div className="mt-7 flex flex-wrap justify-center gap-4 lg:justify-start">
-              <Button href="#waitlist">Join the waitlist</Button>
+              <Button href="/coming-soon">Join the waitlist</Button>
               <Button href="/cdre-prep" variant="secondary">
                 Explore programs
               </Button>
@@ -266,7 +266,7 @@ export default function PricingPage() {
             keeps you moving forward.
           </p>
           <div className="mt-8 flex justify-center">
-            <Button href="https://app.nutripath.ca" external>
+            <Button href="/coming-soon">
               Secure your founding spot
             </Button>
           </div>

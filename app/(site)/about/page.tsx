@@ -344,7 +344,7 @@ export default function AboutPage() {
             Join the founding cohort, or explore the platform first.
           </p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-5">
-            <Button href="https://app.nutripath.ca" external>
+            <Button href="/coming-soon">
               Join the Founding Cohort
             </Button>
             <Button href="/cdre-prep" variant="secondary">

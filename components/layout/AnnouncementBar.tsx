@@ -11,7 +11,7 @@ const messages = [
   {
     text: "The CDRE Founding Cohort opens September 2026",
     linkLabel: "join the waitlist",
-    href: "#waitlist",
+    href: "/coming-soon",
   },
 ];
 
